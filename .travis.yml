@@ -3,5 +3,5 @@ node_js:
   - stable
 install:
   - npm install
-scripts: 
-  - npm test
+# scripts: 
+#   - npm test
