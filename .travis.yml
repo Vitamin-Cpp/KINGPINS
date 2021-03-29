@@ -3,6 +3,8 @@ node_js:
   - stable
 install:
   - npm install
-"scripts": {
-  "start" : "index.js"
-}
+# "scripts": {
+#   "start" : "index.js"
+# }
+script:
+  - npm test

@@ -1,1 +1,19 @@
-{}
+{
+  "name": "kingpins",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vitamin-Cpp/KINGPINS.git"
+  },
+  "author": "kingpins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vitamin-Cpp/KINGPINS/issues"
+  },
+  "homepage": "https://github.com/Vitamin-Cpp/KINGPINS#readme"
+}
