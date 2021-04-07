@@ -6,13 +6,73 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+<!--    <LinearLayout-->
+<!--        android:layout_width="315dp"-->
+<!--        android:layout_height="642dp"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.401"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.496">-->
+
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/welcome"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="68dp"
+        android:paddingLeft="25dp"
+        android:paddingTop="50dp"
+        android:paddingRight="25dp"
+        android:text="welcome, User "
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<!--    <EditText-->
+<!--        android:id="@+id/editTextTextEmailAddress"-->
+<!--        android:layout_width="293dp"-->
+<!--        android:layout_height="54dp"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="textEmailAddress"-->
+<!--        tools:layout_editor_absoluteX="67dp"-->
+<!--        tools:layout_editor_absoluteY="252dp" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/editTextTextPassword"-->
+<!--        android:layout_width="318dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="textPassword"-->
+<!--        tools:layout_editor_absoluteX="53dp"-->
+<!--        tools:layout_editor_absoluteY="344dp" />-->
+
+    <Button
+        android:id="@+id/bttnlogin"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="271dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginLeft="67dp"
+        android:layout_marginTop="378dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginRight="73dp"
+        android:layout_marginBottom="116dp"
+        android:text="login using Google"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome" />
+
+<!--    <Button-->
+<!--        android:id="@+id/button3"-->
+<!--        android:layout_width="247dp"-->
+<!--        android:layout_height="29dp"-->
+<!--        android:text="Button"-->
+<!--        tools:layout_editor_absoluteX="91dp"-->
+<!--        tools:layout_editor_absoluteY="648dp" />-->
+
+    <!--    </LinearLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>
