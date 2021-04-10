@@ -46,6 +46,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        //to register//
+
+        Button register=(Button) findViewById(R.id.btnRegister);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registerIntent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(registerIntent);
+            }
+        });
     }
 
     /*@Override
@@ -98,6 +109,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
+
+
+
+
 
     private void updateUI(FirebaseUser user) {
         Intent intent=new Intent(MainActivity.this,Homepage.class);
