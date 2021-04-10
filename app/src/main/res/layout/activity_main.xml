@@ -1,98 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="315dp"-->
-<!--        android:layout_height="642dp"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.401"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.496">-->
 
-    <TextView
-        android:id="@+id/welcome3"
-        android:layout_width="410dp"
-        android:layout_height="113dp"
-        android:layout_marginTop="244dp"
-        android:fontFamily="@font/quicksand_medium"
-        android:gravity="center|center_vertical"
-        android:paddingLeft="25dp"
-        android:paddingTop="50dp"
-        android:paddingRight="25dp"
-        android:text="A platform where student can collaborate to exchange "
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/welcome"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/quicksand_medium"
-        android:paddingLeft="25dp"
-        android:paddingTop="50dp"
-        android:paddingRight="25dp"
-        android:text="Welcome to StuMarkert"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="37sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@drawable/stationery2">
 
-<!--    <EditText-->
-<!--        android:id="@+id/editTextTextEmailAddress"-->
-<!--        android:layout_width="293dp"-->
-<!--        android:layout_height="54dp"-->
-<!--        android:ems="10"-->
-<!--        android:inputType="textEmailAddress"-->
-<!--        tools:layout_editor_absoluteX="67dp"-->
-<!--        tools:layout_editor_absoluteY="252dp" />-->
+            <TextView
+                android:id="@+id/welcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/quicksand_medium"
+                android:gravity="center"
+                android:text="Welcome to StuMarkert"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="25sp" />
 
-<!--    <EditText-->
-<!--        android:id="@+id/editTextTextPassword"-->
-<!--        android:layout_width="318dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:ems="10"-->
-<!--        android:inputType="textPassword"-->
-<!--        tools:layout_editor_absoluteX="53dp"-->
-<!--        tools:layout_editor_absoluteY="344dp" />-->
+            <TextView
+                android:id="@+id/txtSlogan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="220dp"
+                android:fontFamily="@font/quicksand_medium"
+                android:gravity="center"
+                android:text="A platform where students can collaborate to exchange "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="12sp" />
+        </RelativeLayout>
 
-    <Button
-        android:id="@+id/bttnlogin"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="271dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="67dp"
-        android:layout_marginLeft="67dp"
-        android:layout_marginTop="378dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginRight="73dp"
-        android:layout_marginBottom="40dp"
-        android:text="login using Google"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_loginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:textColorHint="@android:color/darker_gray"
+            android:background="@drawable/my_edit_text">
 
-<!--    <Button-->
-<!--        android:id="@+id/button3"-->
-<!--        android:layout_width="247dp"-->
-<!--        android:layout_height="29dp"-->
-<!--        android:text="Button"-->
-<!--        tools:layout_editor_absoluteX="91dp"-->
-<!--        tools:layout_editor_absoluteY="648dp" />-->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/loginEmail"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:hint="@string/strE_mail"
+                android:inputType="textEmailAddress"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/mail"
+                android:drawableLeft="@drawable/mail"
+                android:drawableTint="@color/colorTheme"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@android:color/transparent"
+                android:textColor="@color/colorBlack" />
 
-    <!--    </LinearLayout>-->
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_loginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/my_edit_text"
+            android:textColorHint="@android:color/darker_gray"
+            app:passwordToggleTint="@color/colorTheme"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/loginPassword"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:hint="@string/strPassword"
+                android:inputType="textPassword"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/lock"
+                android:drawableLeft="@drawable/lock"
+                android:drawableTint="@color/colorTheme"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@android:color/transparent"
+                android:textColor="@color/colorBlack" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/my_button"
+            android:gravity="center"
+            android:padding="14dp"
+            android:text="@string/strLogin"
+            android:textAlignment="center"
+            android:textColor="@color/colorSilverWhite"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/my_button_inv"
+            android:gravity="center"
+            android:padding="14dp"
+            android:text="@string/strRegister"
+            android:textColor="@color/colorTheme"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/btnGoogleLogin"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="75dp"
+            android:layout_marginBottom="10dp"
+            android:drawablePadding="2dp"
+            android:drawableStart="@drawable/google_icon"
+            android:drawableLeft="@drawable/google_icon"
+            android:textColor="@color/colorTheme"
+            android:textSize="13sp"
+            android:textAllCaps="false"
+            android:text="Login using Google" />
+
+    </LinearLayout>
+
+</ScrollView>
