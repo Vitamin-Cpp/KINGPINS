@@ -1,10 +1,13 @@
 package com.example.kingpins;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -16,23 +19,44 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import connection_classes.PHPrequest;
+import connection_classes.RequestHandler;
+import okhttp3.HttpUrl;
+
 public class MainActivity extends AppCompatActivity {
     private Button Btnlogin;
     private static final int RC_SIGN_IN =9001 ;
     GoogleSignInClient mGoogleSignInClient;
     FirebaseAuth mAuth;
+
+    private TextInputEditText etEmail , etPassword;
+    private TextInputLayout ilEmail , ilPassword;
+    private Button btnLogin , btnRegister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // get views
+        ilEmail = findViewById(R.id.layout_loginEmail);
+        ilPassword = findViewById(R.id.layout_loginPassword);
+        etEmail = findViewById(R.id.loginEmail);
+        etPassword = findViewById(R.id.loginPassword);
+        btnLogin = findViewById(R.id.btnLogin);
+        btnRegister = findViewById(R.id.btnRegister);
         Btnlogin = findViewById(R.id.btnGoogleLogin);
         mAuth=FirebaseAuth.getInstance();
+
+        // login with google
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -47,16 +71,124 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //to register//
-
-        Button register=(Button) findViewById(R.id.btnRegister);
-        register.setOnClickListener(new View.OnClickListener() {
+        //go to registration activity
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent registerIntent = new Intent(MainActivity.this, MainActivity2.class);
+                Intent registerIntent = new Intent(MainActivity.this, RegistrationActivity.class);
                 startActivity(registerIntent);
             }
         });
+    }
+
+    // onclick for login button
+    public void doLogin(View view)
+    {
+        // count error from user input
+        int errors = 0;
+
+        // validate email
+        if(TextUtils.isEmpty(etEmail.getText()))
+        {
+            etEmail.setError("Required field!");
+            //etEmail.addTextChangedListener(new OurTextWatcher(ilEmail));
+            errors++;
+        }
+
+        // validate password
+        if(TextUtils.isEmpty(etPassword.getText()))
+        {
+            etPassword.setError("Required field!");
+            //etPassword.addTextChangedListener(new OurTextWatcher(ilPassword));
+            errors++;
+        }
+
+        // if mo errors were detected
+        if(errors == 0)
+        {
+            // make new php request object
+            PHPrequest phPrequest=new PHPrequest();
+            phPrequest.doRequest(MainActivity.this, "login.php", new RequestHandler() {
+
+                // do request
+                @Override
+                public HttpUrl.Builder passParametersToURL(HttpUrl.Builder urlBuilder)
+                {
+                    // override method to pass relevant parameters
+                    urlBuilder.addQueryParameter("email",
+                            etEmail.getText().toString().trim());
+                    urlBuilder.addQueryParameter("password",
+                            etPassword.getText().toString().trim());
+
+                    return urlBuilder;
+                }
+
+                @Override
+                public void processResponse(String responseFromRequest)
+                {
+                    // override method to process response from server
+                    useResponse(responseFromRequest);
+                }
+            });
+
+        }
+    }
+
+    // use response from server
+    // do something with response from server
+    private void useResponse(String response)
+    {
+        // php successfully connected to db and found user with correct detail
+        if(response.equals("Login successful!"))
+        {
+            // alert user
+            Toast.makeText(MainActivity.this,response,Toast.LENGTH_LONG).show();
+
+            // finish current activity
+            finish();
+
+            // create and intent and goto activity
+            Intent i = new Intent(MainActivity.this,Homepage.class);
+            startActivity(i);
+        }
+
+        // user does not exits or provided incorrect details
+        else if(response.equals("Invalid login details!"))
+        {
+            // alert user about input error
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+            alertDialogBuilder.setTitle(response);
+            alertDialogBuilder.setMessage("Email or Password was incorrect.");
+            alertDialogBuilder.setCancelable(false);
+            alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    etPassword.setText("");
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog alertDialog=alertDialogBuilder.create();
+            alertDialog.show();
+        }
+
+        // some weird unknown things happened
+        else
+        {
+            // alert user about error
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+            alertDialogBuilder.setTitle("Unknown Error!");
+            alertDialogBuilder.setMessage("Something unexpected happened, you can try again.");
+            alertDialogBuilder.setCancelable(false);
+            alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    etPassword.setText("");
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog alertDialog=alertDialogBuilder.create();
+            alertDialog.show();
+        }
     }
 
     /*@Override
@@ -117,6 +249,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void updateUI(FirebaseUser user) {
+        finish();
         Intent intent=new Intent(MainActivity.this,Homepage.class);
         startActivity(intent);
     }

@@ -111,6 +111,7 @@
             android:layout_marginRight="70dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/my_button"
+            android:onClick="doLogin"
             android:gravity="center"
             android:padding="14dp"
             android:text="@string/strLogin"
