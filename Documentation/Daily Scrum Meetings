@@ -1,0 +1,27 @@
+DAILY SCRUM MEETINGS
+
+Each meeting with a duration of 15 minutes.
+
+31 MARCH 2021
+Every team member is on Github and Taiga. Setting up travis.ci has been completed and emailed Shun for setting up a server. Sprint Planning Meeting has been documented. User stories and tasks have been put on Taiga.
+
+01 APRIL 2021
+Not yet sure on how the diagramming should be done and will ask Tutor on how it should be done. We still have not received feedback about the server from Shun.
+
+02-05 APRIL 2021: EASTER HOLIDAY
+
+06 APRIL 2021
+Shun still has not responded to the email of setting up server. 4 members of the team with task of coding will meet to begin coding tomorrow. Our information on Taiga and Github Wiki has been put up.
+
+07 APRIL 2021
+We still were not able to get a server. Log in with Google has been coded but still having error issues with logging in. 
+
+08 APRIL 2021
+Decided to use the lamp server for now. The logging in with Google is still not working and the team has started coding the registration part.
+
+
+09 APRIL 2021
+We received an email about our server request and it will be ready by the 12th of April. Login with Google and registration works successfully but the layout needs to be fixed. Thought about doing forgot password but that would not be fnished on time.
+
+10 APRIL 2021
+Design UI of login and registration has been completed. We will change to the new server once it has been set up and working perfectly. We have the diagrams that are needed but will need to confirm them.
