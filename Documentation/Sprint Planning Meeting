@@ -1,0 +1,73 @@
+SPRINT PLANNING MEETING 
+
+DATE: 30 March 2021
+DURATION: 4 hours
+
+SPRINT GOAL
+The main purpose of this sprint is to have completed a log in and registration page for the app. This can be completed if we set up travis.ci and set up the server.  The name of our app is StuMarket.
+
+SPRINT BACKLOG
+USER STORIES: 
+1.	As a user, I want to be able to log in with Google so I can be able to start shopping for textbooks.
+     TASKS:
+•	Set up travis.ci for app to be able to test codes on GitHub.
+•	Set up server. It will provide functionality for the app.
+•	Develop a sign in page. It will allow the user to gain access to the app and this fulfills the user story.
+•	Diagramming. Creating a hand-drawn diagram for the sprint.
+•	Document all sprint meeting to track progress.
+•	Design login UI. 
+ACCEPTANCE CRITERIA:
+•	User can successfully sign in using Google API.
+•	After logging in the home page should be accessible.
+
+2.	As a user, I want to be able to register by creating an account with a password so that the system can remember my data and I can start shopping for textbooks.
+TASKS:
+•	Create user table in Database.
+•	Write PHP for registration.
+     ACCEPTANCE CRITERIA:
+•	User can only submit a form by filling in all required fields.
+•	The email provided must be a valid email.
+•	Information from the form must be stored in our database.
+
+3.	As a registered user, I would like to log in with my e-mail and password so that I can shop for textbooks.
+ TASKS:
+•	Test log in functionality.
+•	Code login functionality using our database.
+•	Write php for log in.
+
+      ACCEPTANCE CRITERIA:
+•	User can only log in after filling in email and password.
+•	The email provided must be a valid email.
+•	The password provided should be the password used when user registered.
+
+EPICS TO BE DELIVERED
+•	Have access to the home page of the shopping app.
+
+SCOPE OF WORK CLARIFICTION
+Definition of done:
+•	Log in works.
+•	Code has been written  by pairs.
+•	All tests have passed.
+•	Messy and poorly designed code has been cleaned up through refactoring.
+•	We have a working server.
+•	Registration works.
+
+KEY RISKS AND CONCERNS
+It might take time to set up the server and the server might not be set up in time.
+
+TASK ALLOCATION
+•	Rumbidzai Moyo – Documentation
+•	Netthias Banda – Diagramming
+•	Donovan Makate – Coding
+•	Katlego Modise – Coding
+•	Magape Mafiri – Coding
+•	Phumlani Ntini – Coding
+
+
+FOLLOW UP
+•	There will be daily scrums everyday.
+•	Sprint Review Meeting – 12 April 2021
+•	Sprint Retrospective – 13 April 2021
+
+
+
