@@ -93,7 +93,7 @@ public class RegistrationActivity extends AppCompatActivity {
             alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    etPassword.setText("");
+                    password.setText("");
                     dialog.dismiss();
                 }
             });
