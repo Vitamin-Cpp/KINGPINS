@@ -19,17 +19,6 @@
             android:background="@drawable/stationery2">
 
             <TextView
-                android:id="@+id/welcome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:fontFamily="@font/quicksand_medium"
-                android:gravity="center"
-                android:text="Welcome to StuMarkert"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="25sp" />
-
-            <TextView
                 android:id="@+id/txtSlogan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
