@@ -6,24 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    android:background="@color/white"
-    tools:context=".Homepage">
-
+    tools:context=".Dashboard"
+    android:background="@color/white">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <include
             layout="@layout/main_toolbar"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Home"
-            android:textSize="50sp"
+            android:text="Dashboard"
             android:textStyle="bold"
+            android:textSize="50sp"
             android:gravity="center"
-            android:textColor="#000000"/>
+            android:textColor="@color/black"/>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="300dp"
@@ -34,4 +32,5 @@
         <include
             layout="@layout/main_nav_drawer"/>
     </RelativeLayout>
+
 </androidx.drawerlayout.widget.DrawerLayout>
