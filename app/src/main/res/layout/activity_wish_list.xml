@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--    //This is now known as cart-->
-<!--    //any modifications of the cart will be made on this activity xml file-->
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,23 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".Dashboard"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".WishList">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <include
             layout="@layout/main_toolbar"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Cart"
-            android:textColor="@color/black"
+            android:text="Wish List"
             android:textSize="50sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#000000"/>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="300dp"
@@ -35,5 +34,4 @@
         <include
             layout="@layout/main_nav_drawer"/>
     </RelativeLayout>
-
 </androidx.drawerlayout.widget.DrawerLayout>

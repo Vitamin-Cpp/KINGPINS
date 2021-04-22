@@ -51,7 +51,15 @@ public class Homepage extends AppCompatActivity {
         //close the app
         logOut(this);
     }
-
+    public void clickProfile(View view){
+        redirectActivity(this,Profile.class);
+    }
+    public void clickMarketPlace(View view){
+        redirectActivity(this, MarketPlace.class);
+    }
+    public void clickWishList(View view){
+        redirectActivity(this, WishList.class);
+    }
     public static void logOut(Activity activity) {
         //Initialize logout message
         Context context;

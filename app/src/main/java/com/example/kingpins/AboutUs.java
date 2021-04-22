@@ -31,6 +31,16 @@ public class AboutUs extends AppCompatActivity {
         Homepage.redirectActivity(this,Dashboard.class);
 
     }
+
+    public void clickProfile(View view){
+        Homepage.redirectActivity(this,Profile.class);
+    }
+    public void clickMarketPlace(View view){
+        Homepage.redirectActivity(this, MarketPlace.class);
+    }
+    public void clickWishList(View view){
+        Homepage.redirectActivity(this, WishList.class);
+    }
     public void clickAboutUs(View view){
         //here we redirect the activity to about us
         recreate();
