@@ -5,6 +5,7 @@ env:
   global:
     - ANDROID_API_LEVEL=25
     - ANDROID_BUILD_TOOLS_VERSION=25.0.0
+    - CODECOV_TOKEN='8acf9189-8fc0-4683-b71c-ec0391cca266' #
 
 android:
   components:
@@ -30,3 +31,7 @@ script:
   - ./gradlew assembleDebug
   - echo "Travis branch is $TRAVIS_BRANCH"
   - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
+  - ./gradlew jacocoTestReport #
+
+after_success: #
+  - bash <(curl -s https://codecov.io/bash) #
