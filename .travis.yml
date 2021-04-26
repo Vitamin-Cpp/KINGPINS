@@ -29,10 +29,9 @@ before_script:
 
 script:
   - ./gradlew assembleDebug
-  - ./gradlew test #
+  - ./gradlew build jacocoTestReport assembleAndroidTest #
   - echo "Travis branch is $TRAVIS_BRANCH"
   - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
-  #- ./gradlew jacocoTestReport #
 
 after_success: #
   - bash <(curl -s https://codecov.io/bash) #
