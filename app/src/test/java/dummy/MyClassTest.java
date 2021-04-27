@@ -1,9 +1,7 @@
-package connection_classes;
+package dummy;
 
-import androidx.test.filters.SmallTest;
 
 import junit.framework.TestCase;
-
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,14 +15,13 @@ public class MyClassTest extends TestCase {
         myClass =  MyClass.getInstance();
     }
 
-    @After
-    @Before
-    public void tearDown() throws Exception{
-        myClass =  MyClass.getInstance();
-    }
-
-    @SmallTest
+    @Test
     public void testGetSum() {
         Assert.assertEquals(myClass.getSum(1,1),2);
+    }
+
+    @After
+    public void tearDown() throws Exception{
+        myClass =  null;
     }
 }

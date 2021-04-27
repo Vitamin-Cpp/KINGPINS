@@ -1,4 +1,4 @@
-package connection_classes;
+package dummy;
 
 public class MyClass {
     private static MyClass myClass = null;
