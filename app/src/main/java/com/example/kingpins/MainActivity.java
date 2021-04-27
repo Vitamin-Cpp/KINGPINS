@@ -81,9 +81,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // onclick for login button
-    public void doLogin(View view)
-    {
+    // validate input
+    public int validationErrors(){
         // count error from user input
         int errors = 0;
 
@@ -102,8 +101,15 @@ public class MainActivity extends AppCompatActivity {
             //etPassword.addTextChangedListener(new OurTextWatcher(ilPassword));
             errors++;
         }
+        return errors;
+    }
 
-        // if mo errors were detected
+    // onclick for login button
+    public void doLogin(View view)
+    {
+
+        int errors = validationErrors();
+        // if no errors were detected
         if(errors == 0)
         {
             // make new php request object
