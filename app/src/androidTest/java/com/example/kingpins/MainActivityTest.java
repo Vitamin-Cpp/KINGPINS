@@ -29,29 +29,29 @@ public class MainActivityTest {
         mainActivity = mainActivityActivityTestRule.getActivity();
     }
 
-    @Test
-    public void testViews()
-    {
-        TextInputEditText etEmail , etPassword;
-        TextInputLayout ilEmail , ilPassword;
-        Button btnLogin, btnRegister, Btnlogin;
-
-        ilEmail = mainActivity.findViewById(R.id.layout_loginEmail);
-        ilPassword = mainActivity.findViewById(R.id.layout_loginPassword);
-        etEmail = mainActivity.findViewById(R.id.loginEmail);
-        etPassword = mainActivity.findViewById(R.id.loginPassword);
-        btnLogin = mainActivity.findViewById(R.id.btnLogin);
-        btnRegister = mainActivity.findViewById(R.id.btnRegister);
-        Btnlogin = mainActivity.findViewById(R.id.btnGoogleLogin);
-
-        assertNotNull(ilEmail);
-        assertNotNull(ilPassword);
-        assertNotNull(etPassword);
-        assertNotNull(etEmail);
-        assertNotNull(btnLogin);
-        assertNotNull(Btnlogin);
-        assertNotNull(btnRegister);
-    }
+//    @Test
+//    public void testViews()
+//    {
+//        TextInputEditText etEmail , etPassword;
+//        TextInputLayout ilEmail , ilPassword;
+//        Button btnLogin, btnRegister, Btnlogin;
+//
+//        ilEmail = mainActivity.findViewById(R.id.layout_loginEmail);
+//        ilPassword = mainActivity.findViewById(R.id.layout_loginPassword);
+//        etEmail = mainActivity.findViewById(R.id.loginEmail);
+//        etPassword = mainActivity.findViewById(R.id.loginPassword);
+//        btnLogin = mainActivity.findViewById(R.id.btnLogin);
+//        btnRegister = mainActivity.findViewById(R.id.btnRegister);
+//        Btnlogin = mainActivity.findViewById(R.id.btnGoogleLogin);
+//
+//        assertNotNull(ilEmail);
+//        assertNotNull(ilPassword);
+//        assertNotNull(etPassword);
+//        assertNotNull(etEmail);
+//        assertNotNull(btnLogin);
+//        assertNotNull(Btnlogin);
+//        assertNotNull(btnRegister);
+//    }
 
     @After
     public void tearDown() throws Exception {
