@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
-    id 'jacoco' //
+    id 'jacoco'
 }
 
 apply plugin: 'jacoco'
@@ -25,11 +25,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        //
         debug{
             testCoverageEnabled true
         }
-        //
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
