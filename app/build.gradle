@@ -1,7 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'jacoco' //
 }
+
+apply plugin: 'jacoco'
 
 android {
     compileSdkVersion 29
@@ -22,6 +25,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        //
+        debug{
+            testCoverageEnabled true
+        }
+        //
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
