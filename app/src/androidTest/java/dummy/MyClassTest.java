@@ -1,13 +1,11 @@
 package dummy;
 
-
-import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MyClassTest extends TestCase {
+public class MyClassTest {
     private MyClass myClass = null;
 
     @Before
