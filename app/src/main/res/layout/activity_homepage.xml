@@ -16,14 +16,64 @@
 
         <include
             layout="@layout/main_toolbar"/>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#808080"
+            android:orientation="vertical"
+            android:gravity="center|right">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:gravity="center|right">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editSearchbar"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="8"
+                    android:textColor="@color/black"
+                    android:layout_margin="5dp"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:background="@drawable/my_edit_text"
+                    android:ems="10"
+                    android:hint="Search"
+                    android:drawableLeft="@drawable/search"
+                    android:gravity="center" >
+                </com.google.android.material.textfield.TextInputEditText>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="2"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_cart"
+                    android:ems="10"
+                    android:background="@drawable/my_edit_text"
+                    android:gravity="center" >
+                </ImageView>
+
+
+            </LinearLayout>
+        </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Home"
-            android:textSize="50sp"
-            android:textStyle="bold"
             android:gravity="center"
-            android:textColor="#000000"/>
+            android:text="Home"
+            android:textColor="#000000"
+            android:textSize="50sp"
+            android:textStyle="bold" />
     </LinearLayout>
     <RelativeLayout
         android:layout_width="300dp"
