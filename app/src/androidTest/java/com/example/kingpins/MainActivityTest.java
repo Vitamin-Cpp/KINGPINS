@@ -33,15 +33,4 @@ public class MainActivityTest {
         mainActivity = null;
     }
 
-    @Test
-    public void validationErrors() {
-    }
-
-    @Test
-    public void doLogin() {
-    }
-
-    @Test
-    public void onActivityResult() {
-    }
 }
