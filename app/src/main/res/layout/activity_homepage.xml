@@ -51,12 +51,14 @@
                     android:gravity="center" >
                 </com.google.android.material.textfield.TextInputEditText>
                 <ImageView
+                    android:id="@+id/goToCart"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_weight="2"
                     android:layout_margin="5dp"
                     android:src="@drawable/ic_cart"
                     android:ems="10"
+                    android:onClick="clickDashboard"
                     android:background="@drawable/my_edit_text"
                     android:gravity="center" >
                 </ImageView>
