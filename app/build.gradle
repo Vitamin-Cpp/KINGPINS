@@ -47,7 +47,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation platform('com.google.firebase:firebase-bom:26.8.0')
     implementation 'com.squareup.okhttp3:okhttp:4.1.0'
-
+//For unit tests
+    testImplementation 'org.mockito:mockito-inline:2.27.0'
+//For UI tests
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
 }
