@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         // login with google
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("702572374210-6531ngu2tjsvdkca0aq1egbtb3tun58a.apps.googleusercontent.com")
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -136,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                     useResponse(responseFromRequest);
                 }
             });
+
         }
     }
 
@@ -246,6 +247,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
+
+
 
 
 
