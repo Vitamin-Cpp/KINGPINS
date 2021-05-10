@@ -50,22 +50,19 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                boolean valid = true;
-                if(etEmail.getText().toString().equals(""))
+                if(etEmail.getText().toString().trim().equals(""))
                 {
                     etEmail.setError("Required field!");
-                    valid = false;
                 }
-                if(etPassword.isEnabled() && etPassword.getText().toString().equals(""))
+                else
                 {
-                    etPassword.setError("Required field!");
-                    valid = false;
-                }
-
-                if(valid){
                     updateEmail();
+                }
+                if(!etPassword.getText().toString().trim().equals(""))
+                {
                     updatePassword();
                 }
+
             }
         });
     }
@@ -115,8 +112,8 @@ public class Profile extends AppCompatActivity {
                 // override method to pass relevant parameters
                 urlBuilder.addQueryParameter("email",
                         Constants.USER_EMAIL);
-                urlBuilder.addQueryParameter("emailNew",
-                        etEmail.getText().toString().trim());
+                urlBuilder.addQueryParameter("passwordNew",
+                        etPassword.getText().toString().trim());
 
                 return urlBuilder;
             }
