@@ -43,8 +43,15 @@ public class Profile extends AppCompatActivity {
         tvFunds.setText(Constants.USER_FUNDS);
         etEmail.setText(Constants.USER_EMAIL);
 
-        btnChangeEmail.setOnClickListener(v -> etEmail.setEnabled(true));
-        btnChangePassword.setOnClickListener(v -> etPassword.setEnabled(true));
+        btnChangeEmail.setOnClickListener(v -> {
+            etEmail.setEnabled(true);
+            etEmail.requestFocus();
+        });
+
+        btnChangePassword.setOnClickListener(v -> {
+            etPassword.setEnabled(true);
+            etPassword.requestFocus();
+        });
 
         btnSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +110,7 @@ public class Profile extends AppCompatActivity {
     {
         // make new php request object
         PHPrequest phPrequest=new PHPrequest();
-        phPrequest.doRequest(Profile.this, "update_email.php", new RequestHandler() {
+        phPrequest.doRequest(Profile.this, "update_password.php", new RequestHandler() {
 
             // do request
             @Override
