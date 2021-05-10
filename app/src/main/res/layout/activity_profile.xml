@@ -111,9 +111,9 @@
             android:gravity="center"
             android:layout_marginTop="20dp"
             android:inputType="textPassword"
-            android:hint="Enter New password"
+            android:hint="Enter New password..."
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            android:textColorHint="#8c8c8c"
             tools:layout_editor_absoluteX="56dp"
             tools:layout_editor_absoluteY="383dp" />
 

@@ -10,6 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
+
 import connection_classes.PHPrequest;
 import connection_classes.RequestHandler;
 import constants_classes.Constants;
@@ -38,9 +42,14 @@ public class Profile extends AppCompatActivity {
         tvLastName = findViewById(R.id.txtLastName);
         tvFunds = findViewById(R.id.txtFunds);
 
+        final Currency curr = Currency.getInstance("ZAR");
+        final NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("en","ZA"));
+        nf.setCurrency(curr);
+        final String value = nf.format(Double.parseDouble(Constants.USER_FUNDS));
+
+        tvFunds.setText(value);
         tvFirstName.setText(Constants.USER_FIRST_NAME);
         tvLastName.setText(Constants.USER_LAST_NAME);
-        tvFunds.setText(Constants.USER_FUNDS);
         etEmail.setText(Constants.USER_EMAIL);
 
         btnChangeEmail.setOnClickListener(v -> {
