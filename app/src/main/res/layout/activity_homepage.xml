@@ -72,74 +72,111 @@
         </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <ImageView
-            android:id="@+id/welcome"
-            android:layout_width="match_parent"
-            android:layout_height="202dp"
-            android:background="@drawable/welcome"
-            android:orientation="vertical"
-            android:padding="5dp">
-            </ImageView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_bold"
-            android:text="BROWSE PRODUCTS AND SERVICES POSTED LATELY!"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:gravity="center_horizontal"
-            android:padding="10sp">
-        </TextView>
-
-        <HorizontalScrollView
-            android:id="@+id/Browse"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:background="@drawable/my_edit_text">
-            <TextView
+                android:id="@+id/welcome"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Our latest products and services"
-                android:background="@color/white"
-                android:textColorHint="@android:color/darker_gray"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textColor="#000000"/>
-        </HorizontalScrollView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_bold"
-            android:text="CHECK OUT THE MOST POPULAR PRODUCTS AND SERVICES AROUND YOU!"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:gravity="center_horizontal"
-            android:padding="10sp">
-        </TextView>
-
-        <HorizontalScrollView
-            android:id="@+id/MostPouplar"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@drawable/my_edit_text">
+                android:layout_height="92dp"
+                android:background="@drawable/welcome"
+                android:orientation="vertical"
+                android:padding="5dp"></ImageView>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:hint="Most popular products and services"
-                android:background="@color/white"
-                android:textColor="#000000"
-                android:textColorHint="@android:color/darker_gray"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-        </HorizontalScrollView>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="BROWSE PRODUCTS AND SERVICES POSTED LATELY!"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:padding="10sp">
+            </TextView>
+
+            <HorizontalScrollView
+                android:id="@+id/Browse"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:background="@drawable/my_edit_text">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Our latest products and services"
+                    android:background="@color/white"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="CHECK OUT THE MOST POPULAR PRODUCTS AND SERVICES AROUND YOU!"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:padding="10sp">
+            </TextView>
+
+            <HorizontalScrollView
+                android:id="@+id/MostPouplar"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/my_edit_text">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:hint="Most popular products and services"
+                    android:background="@color/white"
+                    android:textColor="#000000"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </HorizontalScrollView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="WHAT YOU PURCHASED LAST TIME."
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:padding="10sp">
+            </TextView>
+            <HorizontalScrollView
+                android:id="@+id/history"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/my_edit_text">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:hint="History of the customer's past purchases"
+                    android:background="@color/white"
+                    android:textColor="#000000"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+    </ScrollView>
 
     </LinearLayout>
     <RelativeLayout
