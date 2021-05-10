@@ -96,11 +96,10 @@ public class Profile extends AppCompatActivity {
             @Override
             public void processResponse(String responseFromRequest)
             {
-                // override method to process response from server
-                Toast.makeText(Profile.this,responseFromRequest,Toast.LENGTH_LONG).show();
                 if(responseFromRequest.equals("Email Updated"))
                 {
                     Constants.USER_EMAIL = etEmail.getText().toString().trim();
+                    Toast.makeText(Profile.this,responseFromRequest,Toast.LENGTH_LONG).show();
                 }
             }
         });

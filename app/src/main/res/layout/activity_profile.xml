@@ -110,6 +110,7 @@
             android:padding="10dp"
             android:gravity="center"
             android:layout_marginTop="20dp"
+            android:inputType="textPassword"
             android:hint="Enter New password"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
