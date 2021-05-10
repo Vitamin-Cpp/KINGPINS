@@ -42,11 +42,7 @@ public class Profile extends AppCompatActivity {
         tvLastName = findViewById(R.id.txtLastName);
         tvFunds = findViewById(R.id.txtFunds);
 
-        final Currency curr = Currency.getInstance("ZAR");
-        final NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("en","ZA"));
-        nf.setCurrency(curr);
-        final String value = nf.format(Double.parseDouble(Constants.USER_FUNDS));
-
+        String value = "R " + Constants.USER_FUNDS;
         tvFunds.setText(value);
         tvFirstName.setText(Constants.USER_FIRST_NAME);
         tvLastName.setText(Constants.USER_LAST_NAME);
