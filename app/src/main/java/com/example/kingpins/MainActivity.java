@@ -27,8 +27,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import connection_classes.PHPrequest;
 import connection_classes.RequestHandler;
+import constants_classes.Constants;
 import okhttp3.HttpUrl;
 
 public class MainActivity extends AppCompatActivity {
@@ -145,45 +149,40 @@ public class MainActivity extends AppCompatActivity {
     private void useResponse(String response)
     {
         // php successfully connected to db and found user with correct detail
-        if(response.equals("Login successful!"))
+        if(!response.equals("Invalid login details!"))
         {
-            // alert user
-            Toast.makeText(MainActivity.this,response,Toast.LENGTH_LONG).show();
 
-            // finish current activity
-            finish();
+            // store user data
+            try{
+                JSONObject json = new JSONObject(response);
+                Constants.USER_EMAIL = json.getString("email");
+                Constants.USER_FIRST_NAME = json.getString("firstname");
+                Constants.USER_LAST_NAME = json.getString("lastname");
+                Constants.USER_FUNDS = json.getString("funds");
 
-            // create and intent and goto activity
-            Intent i = new Intent(MainActivity.this,Homepage.class);
-            startActivity(i);
+                // alert user
+                Toast.makeText(MainActivity.this,"Login Approved",Toast.LENGTH_LONG).show();
+
+                // finish current activity
+                finish();
+
+                // create and intent and goto activity
+                Intent i = new Intent(MainActivity.this,Homepage.class);
+                startActivity(i);
+
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
         }
 
         // user does not exits or provided incorrect details
-        else if(response.equals("Invalid login details!"))
-        {
+        else {
             // alert user about input error
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
             alertDialogBuilder.setTitle(response);
             alertDialogBuilder.setMessage("Email or Password was incorrect.");
-            alertDialogBuilder.setCancelable(false);
-            alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    etPassword.setText("");
-                    dialog.dismiss();
-                }
-            });
-            AlertDialog alertDialog=alertDialogBuilder.create();
-            alertDialog.show();
-        }
-
-        // some weird unknown things happened
-        else
-        {
-            // alert user about error
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
-            alertDialogBuilder.setTitle("Unknown Error!");
-            alertDialogBuilder.setMessage("Something unexpected happened, you can try again.");
             alertDialogBuilder.setCancelable(false);
             alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
