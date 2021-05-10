@@ -5,15 +5,131 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import connection_classes.PHPrequest;
+import connection_classes.RequestHandler;
+import constants_classes.Constants;
+import okhttp3.HttpUrl;
 
 public class Profile extends AppCompatActivity {
     DrawerLayout drawerLayout;
+    private Button btnSaveChanges, btnChangePassword, btnChangeEmail;
+    private TextView tvFirstName, tvLastName, tvFunds;
+    private EditText etEmail, etPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         drawerLayout = findViewById(R.id.drawer_layout);
+
+        btnSaveChanges = findViewById(R.id.btnSave);
+        btnChangeEmail = findViewById(R.id.btnChangeEmail);
+        btnChangePassword = findViewById(R.id.btnChangePassword);
+
+        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPassword);
+
+        tvFirstName = findViewById(R.id.txtFirstName);
+        tvLastName = findViewById(R.id.txtLastName);
+        tvFunds = findViewById(R.id.txtFunds);
+
+        tvFirstName.setText(Constants.USER_FIRST_NAME);
+        tvLastName.setText(Constants.USER_LAST_NAME);
+        tvFunds.setText(Constants.USER_FUNDS);
+        etEmail.setText(Constants.USER_EMAIL);
+
+        btnChangeEmail.setOnClickListener(v -> etEmail.setEnabled(true));
+        btnChangePassword.setOnClickListener(v -> etPassword.setEnabled(true));
+
+        btnSaveChanges.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                boolean valid = true;
+                if(etEmail.getText().toString().equals(""))
+                {
+                    etEmail.setError("Required field!");
+                    valid = false;
+                }
+                if(etPassword.isEnabled() && etPassword.getText().toString().equals(""))
+                {
+                    etPassword.setError("Required field!");
+                    valid = false;
+                }
+
+                if(valid){
+                    updateEmail();
+                    updatePassword();
+                }
+            }
+        });
     }
+
+    public void updateEmail()
+    {
+        // make new php request object
+        PHPrequest phPrequest=new PHPrequest();
+        phPrequest.doRequest(Profile.this, "update_email.php", new RequestHandler() {
+
+            // do request
+            @Override
+            public HttpUrl.Builder passParametersToURL(HttpUrl.Builder urlBuilder)
+            {
+                // override method to pass relevant parameters
+                urlBuilder.addQueryParameter("email",
+                        Constants.USER_EMAIL);
+                urlBuilder.addQueryParameter("emailNew",
+                        etEmail.getText().toString().trim());
+
+                return urlBuilder;
+            }
+
+            @Override
+            public void processResponse(String responseFromRequest)
+            {
+                // override method to process response from server
+                Toast.makeText(Profile.this,responseFromRequest,Toast.LENGTH_LONG).show();
+                if(responseFromRequest.equals("Email Updated"))
+                {
+                    Constants.USER_EMAIL = etEmail.getText().toString().trim();
+                }
+            }
+        });
+    }
+
+    public void updatePassword()
+    {
+        // make new php request object
+        PHPrequest phPrequest=new PHPrequest();
+        phPrequest.doRequest(Profile.this, "update_email.php", new RequestHandler() {
+
+            // do request
+            @Override
+            public HttpUrl.Builder passParametersToURL(HttpUrl.Builder urlBuilder)
+            {
+                // override method to pass relevant parameters
+                urlBuilder.addQueryParameter("email",
+                        Constants.USER_EMAIL);
+                urlBuilder.addQueryParameter("emailNew",
+                        etEmail.getText().toString().trim());
+
+                return urlBuilder;
+            }
+
+            @Override
+            public void processResponse(String responseFromRequest)
+            {
+                // override method to process response from server
+                Toast.makeText(Profile.this,responseFromRequest,Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
     public void ClickMenu(View view){
         //open the drawer
         Homepage.openDrawer(drawerLayout);
