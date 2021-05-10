@@ -62,6 +62,10 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if(!etPassword.getText().toString().trim().equals(""))
+                {
+                    updatePassword();
+                }
                 if(etEmail.getText().toString().trim().equals(""))
                 {
                     etEmail.setError("Required field!");
@@ -70,11 +74,6 @@ public class Profile extends AppCompatActivity {
                 {
                     updateEmail();
                 }
-                if(!etPassword.getText().toString().trim().equals(""))
-                {
-                    updatePassword();
-                }
-
             }
         });
     }
