@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    android:background="@color/white"
+    android:background="@color/colorSilverWhite"
     tools:context=".Homepage">
 
     <LinearLayout
@@ -19,13 +19,15 @@
             layout="@layout/main_toolbar"/>
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
+            android:background="@color/colorSilverWhite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#808080"
+            android:background="@color/colorSilverWhite"
+
             android:orientation="vertical"
             android:gravity="center|right">
 
@@ -71,11 +73,21 @@
 
         </androidx.appcompat.widget.Toolbar>
 
+
+            <ImageView
+            android:id="@+id/welcome"
+            android:layout_width="match_parent"
+            android:layout_height="202dp"
+            android:background="@drawable/welcome"
+            android:orientation="vertical"
+            android:padding="5dp">
+            </ImageView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_bold"
-            android:text="Browse Products and Services posted lately!"
+            android:text="BROWSE PRODUCTS AND SERVICES POSTED LATELY!"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:gravity="center_horizontal"
@@ -92,6 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Our latest products and services"
+                android:background="@color/white"
                 android:textColorHint="@android:color/darker_gray"
                 android:textSize="28sp"
                 android:textStyle="bold"
@@ -103,7 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_bold"
-            android:text="Check out the most popular products and services around you!"
+            android:text="CHECK OUT THE MOST POPULAR PRODUCTS AND SERVICES AROUND YOU!"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:gravity="center_horizontal"
@@ -115,42 +128,19 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:background="@drawable/my_edit_text">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:hint="Most popular products and services"
+                android:background="@color/white"
+                android:textColor="#000000"
                 android:textColorHint="@android:color/darker_gray"
                 android:textSize="25sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textColor="#000000"/>
+                android:textStyle="bold" />
         </HorizontalScrollView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_bold"
-            android:text="What you purchased last time."
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:gravity="center_horizontal"
-            android:padding="10sp">
-        </TextView>
 
-        <HorizontalScrollView
-            android:id="@+id/History"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@drawable/my_edit_text">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="History of the customers past purchases"
-            android:textColorHint="@android:color/darker_gray"
-            android:textStyle="bold"
-            android:textSize="22sp"
-            android:gravity="center"
-            android:textColor="#000000"/>
-        </HorizontalScrollView>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="300dp"
