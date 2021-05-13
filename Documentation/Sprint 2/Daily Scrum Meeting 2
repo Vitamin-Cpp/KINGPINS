@@ -1,0 +1,146 @@
+DAILY SCRUM MEETINGS 2
+Each meeting with a duration of 15 minutes.
+14 APRIL 2021
+Can only set up server on campus using the Wits Ethernet. Our Priority is the Home Page and Side Bar.
+15 APRIL 2021
+Diagramming. There is still a few issues with setting up the server and will try complete it tomorrow on campus to ensure everything works.
+16 APRIL 2021
+Server has been set successfully and will soon change the URL of server for the application.
+19 APRIL 2021
+Have began doing the code for the sidebar. Sidebar has Home, Dashboard, About us and Log out. It is still missing My Items, Services, Products and Favorites.
+20 APRIL 2021
+The side bar has been completed. All that is left to do the home page, add the profile and username.
+ 
+21 APRIL 2021
+Decided to use the lamp server for now. The logging in with Google is still not working and the team has started coding the registration part.
+
+
+
+22 APRIL 2021
+We received an email about our server request and it will be ready by the 12th of April. Login with Google and registration works successfully but the layout needs to be fixed. Thought about doing forgot password but that would not be fnished on time.
+23 APRIL 2021
+Design UI of login and registration has been completed. We will change to the new server once it has been set up and working perfectly. We have the diagrams that are needed but will need to confirm them.
+
+
+
+
+
+
+
+
+
+
+
+
+
+FULL METTINGS
+[22:34, 4/16/2021] Rumbi❤️❤️❤️: Yea and I think we should start as soon as possible.
+
+I'm having a few issues when I try set up the server 🤦🏾‍♀‍
+[10:11, 4/17/2021] +27 79 826 0547: Today i have a very busy day but I'll try to set up the server in the evening. And in terms of android tasks i will do the things related to the profile
+[10:12, 4/17/2021] +27 79 826 0547: You'll tell me how far you went with setting it up. So that i try to pick up from there 
+[12:20, 4/17/2021] Rumbi❤️❤️❤️: Do you use Windows or Linux?
+[12:24, 4/17/2021] +27 79 826 0547: I'm on windows, will it be a problem?
+[12:33, 4/17/2021] Rumbi❤️❤️❤️: Im not sure or maybe I'm doing it wrong but I keep getting connection timed out and I tried other ways but same result. Like right after I put the username and password on Putty it just does a connection time out
+[12:36, 4/17/2021] +27 79 826 0547: Are off campus? It said something about direct ssh from off campus cannot be granted
+[12:36, 4/17/2021] +27 79 826 0547: Let me try to login
+[12:36, 4/17/2021] Rumbi❤️❤️❤️: Oh yea, that could be the reason
+[12:41, 4/17/2021] +27 79 826 0547: Ahh not working,i realised it also says ssh from wits must be done via ethernet not wifi
+[12:42, 4/17/2021] +27 79 826 0547: And we dont have those ethernet cables in our rooms
+[12:50, 4/17/2021] Rumbi❤️❤️❤️: Alright. I am only able to come to campus on Monday to be able to try set up the server
+[12:54, 4/17/2021] Rumbi❤️❤️❤️: I remember MJ saying setting up the server will be complicated.
+And if we are having issues we can email mss.gmass@gmail.com because that's where we got the server from
+[12:57, 4/17/2021] +27 79 826 0547: I think that's what we gonna have to do. But let's see if monday you'll have some luck
+[13:11, 4/17/2021] Rumbi❤️❤️❤️: Sure
+[19:11, 4/18/2021] +27 81 477 3458: Hey guys anyone pulled anything, I wanted to code the side bar thing
+[19:12, 4/18/2021] +27 79 826 0547: Nah, not on my side
+[19:13, 4/18/2021] Rumbi❤️❤️❤️: I haven't
+[19:13, 4/18/2021] +27 81 477 3458: Ayt cool. I'll get on with it then
+[04:15, 4/19/2021] +27 81 477 3458: I just need to add the profile one and as for the Dashboard and About Us we'll decide what to customize to again, I just done those to be able to finish
+[04:16, 4/19/2021] Rumbi❤️❤️❤️: Look good but also need My Items, Services, Products and Favorites on the sidebar
+[04:17, 4/19/2021] +27 81 477 3458: Yeah no biggie there and also the colors
+[04:17, 4/19/2021] +27 81 477 3458: We'll have to adjust again if needed.
+[04:18, 4/19/2021] +27 81 477 3458: And the android thing will have to be replaced by the logo which is being created by @+27 73 880 8874
+[04:19, 4/19/2021] Rumbi❤️❤️❤️: That seem fine
+[04:20, 4/19/2021] +27 81 477 3458: That's cool then, I can go to sleep. Take care👋🏾
+[10:44, 4/19/2021] +27 73 880 8874: ?
+[10:44, 4/19/2021] +27 73 880 8874: Or
+[10:45, 4/19/2021] Rumbi❤️❤️❤️: I think this one
+[10:46, 4/19/2021] +27 79 826 0547: Yep, i second that
+[10:47, 4/19/2021] Donovan: This one
+[11:01, 4/19/2021] +27 84 893 0176: Looks clean
+[11:36, 4/19/2021] +27 81 477 3458: Yeah this looks great
+[13:36, 4/19/2021] Rumbi❤️❤️❤️: The new password for the server is kingpins
+[14:15, 4/19/2021] +27 79 826 0547: You managed to set it up?
+[14:15, 4/19/2021] +27 79 826 0547: Do we have a meeting with mj?
+[14:16, 4/19/2021] Rumbi❤️❤️❤️: No we don't
+[14:16, 4/19/2021] Rumbi❤️❤️❤️: I'm still setting it up
+[14:17, 4/19/2021] +27 79 826 0547: Okay, Thanks.
+[14:17, 4/19/2021] +27 79 826 0547: 💯
+[14:22, 4/19/2021] +27 73 880 8874: Replacing the pic in log with this one...
+[14:22, 4/19/2021] +27 73 880 8874: Login*
+[14:26, 4/19/2021] +27 81 477 3458: This is cool
+[14:38, 4/19/2021] Rumbi❤️❤️❤️: I think I have set up the the server. Will check if it works but now we can put database and login without needing to connect by ethernet
+[14:45, 4/19/2021] +27 79 826 0547: That's great news🙏🏾
+[14:50, 4/19/2021] Rumbi❤️❤️❤️: The name is student and the password is kingpins
+[18:33, 4/19/2021] +27 79 826 0547: How do we login into mysql
+[18:37, 4/19/2021] Rumbi❤️❤️❤️: Mysql -u root - p
+[18:38, 4/19/2021] +27 79 826 0547: The password us also kingpins
+[18:38, 4/19/2021] Rumbi❤️❤️❤️: Yes
+[18:49, 4/19/2021] +27 79 826 0547: I can't get it to work
+[18:50, 4/19/2021] Rumbi❤️❤️❤️: Oh first put it in root by typing sudo - s then you do the mysql
+[18:54, 4/19/2021] +27 79 826 0547: 🤦🏾‍♂‍ohh, yahh It worked. Thank you🙏🏾
+[20:44, 4/19/2021] Rumbi❤️❤️❤️: Is the server working fine on your side
+[22:07, 4/19/2021] +27 79 826 0547: Yeah. It's working.
+[22:08, 4/19/2021] Rumbi❤️❤️❤️: 👌🏾👌🏾
+[22:10, 4/19/2021] +27 79 826 0547: I guess we need to start by creating a database so that we can migrate....I'll look into it.
+[22:57, 4/19/2021] +27 73 880 8874: It doesn’t wanna work
+[23:01, 4/19/2021] +27 79 826 0547: It's working on mine. I think it has something to do with being off campus
+[23:01, 4/19/2021] +27 79 826 0547: I created a database called kingpins
+[23:05, 4/19/2021] +27 73 880 8874: So you saying we can only use this thing when we on the premises ?
+[23:06, 4/19/2021] +27 73 880 8874: And I noticed I can’t even access my personal lamp
+[23:07, 4/19/2021] +27 79 826 0547: Yeah Rumbi had to come to campus to set it up. Idk if she can access where she is now
+[23:08, 4/19/2021] +27 79 826 0547: That one you should be able to access anywhere. I was using my lamp during January
+[23:08, 4/19/2021] +27 73 880 8874: I think they took it down or something
+[23:09, 4/19/2021] +27 73 880 8874: Can you check if you can access mine
+[23:10, 4/19/2021] +27 79 826 0547: Let me check
+[23:11, 4/19/2021] +27 79 826 0547: It's fine
+[23:13, 4/19/2021] +27 73 880 8874: Mina ithi permission dinied
+[23:14, 4/19/2021] +27 79 826 0547: Ehh it shouldn't, i don't know what could be causing that
+[03:11, 4/20/2021] Rumbi❤️❤️❤️: You can only access it from campus, we can't access it from off campus
+[14:33, 4/20/2021] +27 84 893 0176: Guys I'm really sorry for being kind of unreachable I'm having data issues on my side but I will try and follow up with you guys
+[15:31, 4/20/2021] Rumbi❤️❤️❤️: Alright that's fine
+[10:15, 4/21/2021] +27 79 826 0547: Do we have a meeting w pierce?
+[10:24, 4/21/2021] Rumbi❤️❤️❤️: Nope, that next week
+[10:27, 4/21/2021] +27 79 826 0547: Okay, cool.
+[14:19, 4/21/2021] Rumbi❤️❤️❤️: How are the coveralls going
+[14:21, 4/21/2021] +27 81 477 3458: I'm waiting on someone to get back to me with that
+[14:26, 4/21/2021] Rumbi❤️❤️❤️: Sorry guys we haven't been having our daily scrums and haven't been doing much , it's been very busy lately but I will be doing all the documentation and update things on Taiga and try keep up to date and help out with the coding
+[14:27, 4/21/2021] +27 84 893 0176: Hey guys so I've fixed my data and all. Where can I help
+[14:30, 4/21/2021] Rumbi❤️❤️❤️: I think you can help with the diagramming and maybe the home page
+[14:32, 4/21/2021] Rumbi❤️❤️❤️: Or the renewing password
+[14:34, 4/21/2021] +27 73 880 8874: I’ll do that
+[14:35, 4/21/2021] +27 84 893 0176: Ohhh okay kool I will get to it then
+[02:12, 4/22/2021] +27 81 477 3458: Market place would be where we get products and services, then favourites would be our wish list then cart is self explanatory is this fine?
+[02:13, 4/22/2021] +27 81 477 3458: With response to that text my products would be cart
+[03:34, 4/22/2021] Rumbi❤️❤️❤️: I think it's fine
+[03:37, 4/22/2021] +27 81 477 3458: I think we can then meet and discuss the particulars of each activity
+[03:43, 4/22/2021] +27 81 477 3458: Those that are relevant for this sprint that is
+[04:26, 4/22/2021] Rumbi❤️❤️❤️: Yea I think we should meet later today of everyone Is fine with it
+[17:42, 4/22/2021] +27 79 826 0547: Time?
+[18:33, 4/22/2021] Rumbi❤️❤️❤️: How is 8:30?
+[18:38, 4/22/2021] +27 79 826 0547: Good by me
+[19:03, 4/22/2021] +27 81 477 3458: I'm Fine with that
+[20:11, 4/22/2021] Rumbi❤️❤️❤️: We can use this link
+https://meet.google.com/vcw-svjm-wst
+[14:16, 4/23/2021] +27 84 893 0176: What's up guys.
+[14:16, 4/23/2021] +27 84 893 0176: So did you guys do the homepage? If not can I hop on that like now
+[14:18, 4/23/2021] +27 81 477 3458: I hadn't, you can go ahea
+[14:18, 4/23/2021] +27 81 477 3458: Ahead
+[14:18, 4/23/2021] +27 84 893 0176: Okay kool
+[14:22, 4/23/2021] +27 84 893 0176: Is there a need to pull and what what?
+[14:23, 4/23/2021] +27 81 477 3458: Unless you have the latest version
+[18:03, 4/23/2021] Donovan: Is there something I can help with?
+[18:11, 4/23/2021] +27 73 880 8874: I think you can feature in on the home page
+[13:48, 4/25/2021] +27 81 477 3458: Guys who is VitaminCpp?
+[13:49, 4/25/2021] +27 79 826 0547: I
