@@ -4,4 +4,17 @@
     <string name="strPassword">Password</string>
     <string name="strLogin">Login</string>
     <string name="strRegister">Register</string>
+    <string name="products">PRODUCTS</string>
+    <string name="services">TODO</string>
+    <string name="product">TODO</string>
+    <string name="service">SERVICES</string>
+    <string name="search">Search</string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
+    <string name="browse_products_and_services_posted_lately">BROWSE PRODUCTS AND SERVICES POSTED LATELY!</string>
+    <string name="our_latest_products_and_services">Our latest products and services</string>
+    <string name="check_out_the_most_popular_products_and_services_around_you">CHECK OUT THE MOST POPULAR PRODUCTS AND SERVICES AROUND YOU!</string>
+    <string name="most_popular_products_and_services">Most popular products and services</string>
+    <string name="what_you_purchased_last_time">WHAT YOU PURCHASED LAST TIME.</string>
+    <string name="history_of_the_customer_s_past_purchases">History of the customer\'s past purchases</string>
 </resources>
