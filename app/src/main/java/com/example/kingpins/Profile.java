@@ -209,6 +209,9 @@ public class Profile extends AppCompatActivity {
     public void clickMarketPlace(View view){
         Homepage.redirectActivity(this,MarketPlace.class);
     }
+    public void clickBalance(View view){
+        Homepage.redirectActivity(this,Balance.class);
+    }
     public void clickDashboard(View view){
         Homepage.redirectActivity(this, Dashboard.class);
     }

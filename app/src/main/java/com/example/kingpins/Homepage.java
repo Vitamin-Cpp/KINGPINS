@@ -56,6 +56,9 @@ public class Homepage extends AppCompatActivity {
     public void clickProfile(View view){
         redirectActivity(this,Profile.class);
     }
+    public void clickBalance(View view){
+        Homepage.redirectActivity(this,Balance.class);
+    }
     public void clickMarketPlace(View view){
         redirectActivity(this, MarketPlace.class);
     }

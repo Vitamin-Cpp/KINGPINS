@@ -3,16 +3,37 @@ package com.example.kingpins;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-public class AboutUs extends AppCompatActivity {
+import constants_classes.Constants;
+
+public class Balance extends AppCompatActivity {
+    private Button addfunds;
+    private TextView tvFunds;
     DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_us);
+        setContentView(R.layout.activity_balance);
         drawerLayout = findViewById(R.id.drawer_layout);
+
+        tvFunds=findViewById(R.id.textView5);
+        String value = "R " + Constants.USER_FUNDS;
+        tvFunds.setText(value);
+
+
+        addfunds=findViewById(R.id.add_funds);
+        addfunds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Balance.this, Deposit.class);
+                startActivity(intent);
+            }
+        });
     }
     public void ClickMenu(View view){
         //open the drawer
@@ -32,11 +53,9 @@ public class AboutUs extends AppCompatActivity {
 
     }
 
+    public void clickBalance(View view){recreate();;}
     public void clickProfile(View view){
         Homepage.redirectActivity(this,Profile.class);
-    }
-    public void clickBalance(View view){
-        Homepage.redirectActivity(this,Balance.class);
     }
     public void clickMarketPlace(View view){
         Homepage.redirectActivity(this, MarketPlace.class);
@@ -46,7 +65,7 @@ public class AboutUs extends AppCompatActivity {
     }
     public void clickAboutUs(View view){
         //here we redirect the activity to about us
-        recreate();
+        Homepage.redirectActivity(this,AboutUs.class);
     }
     public void clickLogOut(View view){
         //we log out
