@@ -83,74 +83,42 @@
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <EditText
-            android:id="@+id/etEmail"
-            android:layout_width="300dp"
+        <LinearLayout
+            android:layout_width="345dp"
             android:layout_height="60dp"
-            android:background="@drawable/my_edit_text"
-            android:ems="10"
-            android:enabled="false"
-            android:gravity="center"
-            android:padding="10dp"
             android:layout_marginTop="20dp"
-            android:inputType="textEmailAddress"
-            android:text="MyAddress@domain.com"
-            android:textColor="@color/black"
-            tools:layout_editor_absoluteX="55dp"
-            tools:layout_editor_absoluteY="293dp" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/my_edit_text"
-            android:ems="10"
-            android:enabled="false"
-            android:padding="10dp"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:inputType="textPassword"
-            android:hint="Enter New password..."
-            android:textColor="@color/black"
-            android:textColorHint="#8c8c8c"
-            tools:layout_editor_absoluteX="56dp"
-            tools:layout_editor_absoluteY="383dp" />
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="295dp"
+                android:layout_height="60dp"
+                android:background="@drawable/my_edit_text"
+                android:ems="10"
+                android:enabled="false"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="MyAddress@domain.com"
+                android:textColor="@color/black" />
 
-        <Button
-            android:id="@+id/btnChangeEmail"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/my_button_inv"
-            android:padding="10dp"
-            android:text="Edit email"
-            android:textColor="@color/colorTheme"
-            tools:layout_editor_absoluteX="155dp"
-            tools:layout_editor_absoluteY="460dp" />
+            <Button
+                android:id="@+id/btnChangeEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/pen" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnChangePassword"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/my_button_inv"
+            android:background="@android:color/transparent"
             android:padding="10dp"
-            android:text="Edit Password"
+            android:text="Forgot Password?"
             android:textColor="@color/colorTheme"
             tools:layout_editor_absoluteX="138dp"
             tools:layout_editor_absoluteY="525dp" />
-
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/my_button"
-            android:padding="10dp"
-            android:text="Save Changes"
-            tools:layout_editor_absoluteX="154dp"
-            tools:layout_editor_absoluteY="590dp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
     <RelativeLayout

@@ -1,9 +1,12 @@
 package com.example.kingpins;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,61 +24,101 @@ import okhttp3.HttpUrl;
 
 public class Profile extends AppCompatActivity {
     DrawerLayout drawerLayout;
-    private Button btnSaveChanges, btnChangePassword, btnChangeEmail;
-    private TextView tvFirstName, tvLastName, tvFunds;
-    private EditText etEmail, etPassword;
-
+    private Button  btnChangePassword, btnChangeEmail;
+    private TextView tvFirstName, tvLastName, tvFunds, tvEmail;
+    private String newPassword = "", newEmail = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         drawerLayout = findViewById(R.id.drawer_layout);
 
-        btnSaveChanges = findViewById(R.id.btnSave);
         btnChangeEmail = findViewById(R.id.btnChangeEmail);
         btnChangePassword = findViewById(R.id.btnChangePassword);
-
-        etEmail = findViewById(R.id.etEmail);
-        etPassword = findViewById(R.id.etPassword);
 
         tvFirstName = findViewById(R.id.txtFirstName);
         tvLastName = findViewById(R.id.txtLastName);
         tvFunds = findViewById(R.id.txtFunds);
+        tvEmail = findViewById(R.id.tvEmail);
 
         String value = "R " + Constants.USER_FUNDS;
         tvFunds.setText(value);
         tvFirstName.setText(Constants.USER_FIRST_NAME);
         tvLastName.setText(Constants.USER_LAST_NAME);
-        etEmail.setText(Constants.USER_EMAIL);
+        tvEmail.setText(Constants.USER_EMAIL);
 
         btnChangeEmail.setOnClickListener(v -> {
-            etEmail.setEnabled(true);
-            etEmail.requestFocus();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Enter new email address");
+
+            // Set up the input
+            final EditText input = new EditText(this);
+            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+            builder.setView(input);
+            builder.setCancelable(false);
+            // Set up the buttons
+            builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    newEmail = input.getText().toString().trim();
+                    if(newEmail.equals(""))
+                    {
+                        input.setError("Required field!");
+                    }
+                    else
+                    {
+                        updateEmail();
+                    }
+
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            builder.show();
         });
+
 
         btnChangePassword.setOnClickListener(v -> {
-            etPassword.setEnabled(true);
-            etPassword.requestFocus();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Enter new password");
+
+            // Set up the input
+            final EditText input = new EditText(this);
+            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            builder.setView(input);
+            builder.setCancelable(false);
+            // Set up the buttons
+            builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    newPassword = input.getText().toString().trim();
+                    if(newPassword.equals(""))
+                    {
+                        input.setError("Required field!");
+                    }
+                    else
+                    {
+                        updatePassword();
+                    }
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            builder.show();
         });
 
-        btnSaveChanges.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(!etPassword.getText().toString().trim().equals(""))
-                {
-                    updatePassword();
-                }
-                if(etEmail.getText().toString().trim().equals(""))
-                {
-                    etEmail.setError("Required field!");
-                }
-                else
-                {
-                    updateEmail();
-                }
-            }
-        });
     }
 
     public void updateEmail()
@@ -92,7 +135,7 @@ public class Profile extends AppCompatActivity {
                 urlBuilder.addQueryParameter("email",
                         Constants.USER_EMAIL);
                 urlBuilder.addQueryParameter("emailNew",
-                        etEmail.getText().toString().trim());
+                        newEmail);
 
                 return urlBuilder;
             }
@@ -102,8 +145,13 @@ public class Profile extends AppCompatActivity {
             {
                 if(responseFromRequest.equals("Email Updated"))
                 {
-                    Constants.USER_EMAIL = etEmail.getText().toString().trim();
+                    tvEmail.setText(newEmail);
+                    Constants.USER_EMAIL = newEmail;
                     Toast.makeText(Profile.this,responseFromRequest,Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(Profile.this,"Failed to update email!",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -123,7 +171,7 @@ public class Profile extends AppCompatActivity {
                 urlBuilder.addQueryParameter("email",
                         Constants.USER_EMAIL);
                 urlBuilder.addQueryParameter("passwordNew",
-                        etPassword.getText().toString().trim());
+                        newPassword);
 
                 return urlBuilder;
             }
@@ -131,8 +179,14 @@ public class Profile extends AppCompatActivity {
             @Override
             public void processResponse(String responseFromRequest)
             {
-                // override method to process response from server
-                Toast.makeText(Profile.this,responseFromRequest,Toast.LENGTH_LONG).show();
+                if(responseFromRequest.trim().equals("Password Updated"))
+                {
+                    Toast.makeText(Profile.this,responseFromRequest.trim(),Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(Profile.this,"Failed to update password!",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
