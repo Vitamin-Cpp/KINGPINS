@@ -33,10 +33,7 @@ public class Deposit extends AppCompatActivity {
             public void onClick(View view) {
                 if(validInput(etFunds.getText().toString().trim())){
                     updateBalance();
-                    /*int funds=Integer.parseInt(etFunds.getText().toString().trim());
-                    String str=txtView.getText().toString();
-                    int fund=Integer.parseInt(str);
-                    //Constants.USER_FUNDS=etFunds.getText().toString().trim()+Constants.USER_FUNDS;*/
+                    
                 }
                 if(!validInput(etFunds.getText().toString().trim())){
                     etFunds.setError("Invalid input");

@@ -211,7 +211,7 @@ public class Profile extends AppCompatActivity {
     }
     public void clickBalance(View view){
         Homepage.redirectActivity(this,Balance.class);
-    }
+    }//redirect the activity to about us
     public void clickDashboard(View view){
         Homepage.redirectActivity(this, Dashboard.class);
     }

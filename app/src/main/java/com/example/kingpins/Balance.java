@@ -25,7 +25,7 @@ public class Balance extends AppCompatActivity {
         String value = "R " + Constants.USER_FUNDS;
         tvFunds.setText(value);
 
-
+        //takes you to deposit activity
         addfunds=findViewById(R.id.add_funds);
         addfunds.setOnClickListener(new View.OnClickListener() {
             @Override

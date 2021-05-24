@@ -74,7 +74,7 @@ public class MarketPlace extends AppCompatActivity {
     }
     public void clickBalance(View view){
         Homepage.redirectActivity(this,Balance.class);
-    }
+    }//redirect the activity to about us
     public void clickMarketPlace(View view){
         recreate();
     }

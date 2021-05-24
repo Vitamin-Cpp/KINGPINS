@@ -24,7 +24,7 @@
                 android:id="@+id/txtSlogan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="220dp"
+                android:layout_marginTop="221dp"
                 android:fontFamily="@font/quicksand_medium"
                 android:gravity="center"
                 android:text="A platform where students can collaborate to exchange "
