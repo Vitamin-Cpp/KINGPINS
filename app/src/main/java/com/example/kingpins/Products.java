@@ -1,7 +1,5 @@
 package com.example.kingpins;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,7 +45,6 @@ public class Products extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    Button Books;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,52 +53,12 @@ public class Products extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
-
-    private final View.OnClickListener mListener = new View.OnClickListener() {
-        public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.bttnStaitionery:
-                    // do stuff
-                    startActivity(new Intent(getActivity(), stationery.class));
-                    break;
-                case R.id.bttnPeripherals:
-                    // do stuff
-                    startActivity(new Intent(getActivity(), peripherals.class));
-                    break;
-                case R.id.bttnGadgets:
-                    // do stuff
-                    startActivity(new Intent(getActivity(), gadgets.class));
-                    break;
-                case R.id.bttnOffice:
-                    // do stuff
-                    startActivity(new Intent(getActivity(), office.class));
-                    break;
-                case R.id.bttnFurniture:
-                    // do stuff
-                    startActivity(new Intent(getActivity(), furniture.class));
-                    break;
-                case R.id.bttnBooks:
-                    // do stuff
-                    startActivity(new Intent(getActivity(), books.class));
-                    break;
-            }
-        }
-    };
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_products, container, false);
-        view.findViewById(R.id.bttnBooks).setOnClickListener(mListener);
-        view.findViewById(R.id.bttnFurniture).setOnClickListener(mListener);
-        view.findViewById(R.id.bttnOffice).setOnClickListener(mListener);
-        view.findViewById(R.id.bttnGadgets).setOnClickListener(mListener);
-        view.findViewById(R.id.bttnPeripherals).setOnClickListener(mListener);
-        view.findViewById(R.id.bttnStaitionery).setOnClickListener(mListener);
-        return view;
+        return inflater.inflate(R.layout.fragment_products, container, false);
     }
 }
