@@ -85,7 +85,7 @@ public class Products extends Fragment {
                     break;
                 case R.id.bttnBooks:
                     // do stuff
-                    startActivity(new Intent(getActivity(), Homepage.class));
+                    startActivity(new Intent(getActivity(), books.class));
                     break;
             }
         }
