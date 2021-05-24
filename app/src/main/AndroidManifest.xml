@@ -11,8 +11,23 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+<<<<<<< Updated upstream
         <activity android:name=".Deposit"></activity>
         <activity android:name=".Balance" />
+=======
+<<<<<<< HEAD
+        <activity android:name=".furniture"></activity>
+        <activity android:name=".office" />
+        <activity android:name=".gadgets" />
+        <activity android:name=".peripherals" />
+        <activity android:name=".stationery" />
+        <activity android:name=".product_layout" />
+        <activity android:name=".books" />
+=======
+        <activity android:name=".Deposit"></activity>
+        <activity android:name=".Balance" />
+>>>>>>> ea45d17dbef5c58556af4972359bb7333187f7d1
+>>>>>>> Stashed changes
         <activity android:name=".WishList" />
         <activity android:name=".MarketPlace" />
         <activity android:name=".Profile" />

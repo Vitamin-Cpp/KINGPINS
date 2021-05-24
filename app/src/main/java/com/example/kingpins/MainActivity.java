@@ -236,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
 
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(MainActivity.this,user.getEmail() + user.getDisplayName(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this,user.getEmail() +" "+ user.getDisplayName(),Toast.LENGTH_SHORT).show();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
