@@ -16,15 +16,28 @@
         android:orientation="vertical">
         <include
             layout="@layout/main_toolbar"/>
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Cart"
-            android:textColor="@color/black"
-            android:textSize="50sp"
-            android:textStyle="bold" />
+            android:layout_height="0dp"
+            android:layout_weight="0.75"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:id="@+id/mainLinearLayout">
+
+        </LinearLayout>
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCheckout"
+            android:textColor="@color/colorWhite"
+            android:text="checkout"
+            android:onClick="doCheckout"
+            android:background="@drawable/my_button"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center"/>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="300dp"

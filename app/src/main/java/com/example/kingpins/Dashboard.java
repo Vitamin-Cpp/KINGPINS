@@ -4,18 +4,129 @@ package com.example.kingpins;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import connection_classes.PHPrequest;
+import connection_classes.RequestHandler;
+import constants_classes.Constants;
+import okhttp3.HttpUrl;
 
 public class Dashboard extends AppCompatActivity {
     DrawerLayout drawerLayout;
+    LinearLayout mainLinearLayout;
+    Button btnCheckout;
+    String jsonCart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        Resources resources = this.getResources();
+        final int rId = resources.getIdentifier("my_edit_text","drawable", this.getPackageName());
+        Drawable greyBG = resources.getDrawable(rId);
+
+        btnCheckout = findViewById(R.id.btnCheckout);
         drawerLayout = findViewById(R.id.drawer_layout);
+        mainLinearLayout = findViewById(R.id.mainLinearLayout);
+
+        PHPrequest phPrequest = new PHPrequest();
+        phPrequest.doRequest(Dashboard.this, "load_cart.php", new RequestHandler() {
+            @Override
+            public HttpUrl.Builder passParametersToURL(HttpUrl.Builder urlBuilder) {
+                // override method to pass relevant parameters
+                urlBuilder.addQueryParameter("buyerEmail",
+                        Constants.USER_EMAIL);
+                return urlBuilder;
+            }
+
+            @Override
+            public void processResponse(String responseFromRequest) {
+                jsonCart = responseFromRequest;
+                try{
+                    JSONArray jsonArray = new JSONArray(responseFromRequest);
+                    for (int i=0; i < jsonArray.length(); i++){
+                        JSONObject jsonObject = (JSONObject) jsonArray.get(i);
+
+                        String desc = jsonObject.get("description").toString();
+                        String price = jsonObject.get("price").toString();
+
+                        //
+                        LinearLayout l = new LinearLayout(Dashboard.this);
+                        l.setOrientation(LinearLayout.VERTICAL);
+
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(700,120);
+                        layoutParams.setMargins(0,0,0,20);
+                        l.setLayoutParams(layoutParams);
+                        l.setBackground(greyBG);
+
+
+                        mainLinearLayout.addView(l);
+                        TextView t = new TextView(Dashboard.this);
+                        t.setWidth(650);
+                        t.setHeight(60);
+                        t.setGravity(Gravity.CENTER);
+                        t.setTextSize(22);
+                        t.setTextColor(Color.parseColor("#000000"));
+                        String text = desc;
+                        t.setText(text);
+                        l.addView(t);
+
+                        TextView t1 = new TextView(Dashboard.this);
+                        t1.setWidth(650);
+                        t1.setHeight(60);
+                        t1.setGravity(Gravity.CENTER);
+                        t1.setTextSize(22);
+                        t1.setTextColor(Color.parseColor("#000000"));
+                        text ="R "+price+".00";
+                        t1.setTypeface(null, Typeface.BOLD);
+                        t1.setText(text);
+                        l.addView(t1);
+                    }
+
+                }
+                catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
     }
+    public void doCheckout(View view){
+        PHPrequest phPrequest = new PHPrequest();
+        phPrequest.doRequest(this, "checkout.php", new RequestHandler() {
+            @Override
+            public HttpUrl.Builder passParametersToURL(HttpUrl.Builder urlBuilder) {
+                urlBuilder.addQueryParameter("buyerEmail",
+                        Constants.USER_EMAIL);
+                return urlBuilder;
+            }
+
+            @Override
+            public void processResponse(String responseFromRequest) {
+                // clear current UI cart
+                mainLinearLayout.removeAllViews();
+
+                // goto generate receipt
+                // pass json string if necessary(called it jsonCart)
+            }
+        });
+    }
+
     public void ClickMenu(View view){
         //open the drawer
         Homepage.openDrawer(drawerLayout);
