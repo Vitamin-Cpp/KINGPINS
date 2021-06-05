@@ -4,7 +4,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -27,6 +30,7 @@ public class Profile extends AppCompatActivity {
     private Button  btnChangePassword, btnChangeEmail;
     private TextView tvFirstName, tvLastName, tvFunds, tvEmail;
     private String newPassword = "", newEmail = "";
+    //Dialog myDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,8 @@ public class Profile extends AppCompatActivity {
         tvLastName = findViewById(R.id.txtLastName);
         tvFunds = findViewById(R.id.txtFunds);
         tvEmail = findViewById(R.id.tvEmail);
+
+       // myDialog = new Dialog(this);
 
         String value = "R " + Constants.USER_FUNDS;
         tvFunds.setText(value);
@@ -119,6 +125,24 @@ public class Profile extends AppCompatActivity {
             builder.show();
         });
 
+    }
+    public void showPopup(View v) {
+        Homepage.redirectActivity(this,custompopup.class);
+//        TextView txtclose;
+//        Button btnUpload;
+//        //myDialog.setContentView(R.layout.activity_custompopup);
+//        txtclose =(TextView) custompopup.findViewById(R.id.txtclose);
+//        txtclose.setText("X");
+//        btnUpload = (Button) myDialog.findViewById(R.id.btnUpload);
+//        txtclose.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                myDialog.dismiss();
+//            }
+//        });
+//     myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        myDialog.show();
+//
     }
 
     public void updateEmail()
