@@ -72,7 +72,7 @@ public class custompopup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //we send stuff for storage on the database
-                
+
             }
         });
     }
