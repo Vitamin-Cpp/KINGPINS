@@ -21,6 +21,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import connection_classes.PHPrequest;
 import connection_classes.RequestHandler;
 import constants_classes.Constants;
@@ -31,7 +33,10 @@ public class Dashboard extends AppCompatActivity {
     LinearLayout mainLinearLayout;
     Button btnCheckout;
     String jsonCart;
+
     int totalDue = 0;
+    ArrayList<String[]> receiptData = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +72,8 @@ public class Dashboard extends AppCompatActivity {
                         String desc = jsonObject.get("description").toString();
                         String price = jsonObject.get("price").toString();
                         totalDue += Integer.parseInt(price);
+
+                        receiptData.add(new String[]{desc, price});
                         //
                         LinearLayout l = new LinearLayout(Dashboard.this);
                         l.setOrientation(LinearLayout.VERTICAL);
@@ -128,12 +135,14 @@ public class Dashboard extends AppCompatActivity {
                     mainLinearLayout.removeAllViews();
                     int newFunds = (int)(Double.parseDouble(Constants.USER_FUNDS) - totalDue);
                     Constants.USER_FUNDS = newFunds +".00";
+
+                    // goto generate receipt
+                    // use int totalDue
+                    // use arraylist receiptData, contains array [description, price] for each element
                 }
                 else{
                     Toast.makeText(Dashboard.this,responseFromRequest,Toast.LENGTH_LONG).show();
                 }
-                // goto generate receipt
-                // pass json string if necessary(called it jsonCart)
             }
         });
     }
