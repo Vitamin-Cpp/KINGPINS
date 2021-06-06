@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ import com.google.android.gms.common.api.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +60,8 @@ public class books extends AppCompatActivity {
 
         //here we are about to add objects to our product list
         products = new ArrayList<>();
+
+
         products.add(new prod("Principles and Practice by Eric Mazur","R600","katlehojnr3520@gmail.com",R.drawable.principlesandpracticeofphysics));
         products.add(new prod("Calculus","R400","katlehojnr3520@gmail.com",R.drawable.calculus));
         //we specify an adapter for our recycler view
@@ -120,43 +124,5 @@ public class books extends AppCompatActivity {
 //        Volley.newRequestQueue(HomeActivity.this).add(stringRequest);
 //
 //    }
-    //we deal with the side bar navigation
-//public void ClickMenu(View view){
-//    //open the drawer
-//    Homepage.openDrawer(drawerLayout);
-//}
-//    public void clickLogo(View view){
-//        // clicking the logo closes the drawer
-//        Homepage.closeDrawer(drawerLayout);
-//    }
-//    public void clickHome(View view){
-//        //redirect the activity to the homepage
-//        Homepage.redirectActivity(this, Homepage.class);
-//    }
-//    public void clickProfile(View view){
-//        Homepage.redirectActivity(this,Profile.class);
-//    }
-//    public void clickMarketPlace(View view){
-//        Homepage.redirectActivity(this, MarketPlace.class);
-//    }
-//    public void clickDashboard(View view){
-//        Homepage.redirectActivity(this, Dashboard.class);
-//    }
-//    public void clickWishList(View view){
-//        Homepage.redirectActivity(this,WishList.class);
-//    }
-//    public void clickAboutUs(View view){
-//        //here we redirect the activity to about us
-//        Homepage.redirectActivity(this,AboutUs.class);
-//    }
-//    public void clickLogOut(View view){
-//        //we log out
-//        Homepage.logOut(this);
-//    }
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        //close the drawer
-//        Homepage.closeDrawer(drawerLayout);
-//    }
+
 }

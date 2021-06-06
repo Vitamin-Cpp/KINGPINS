@@ -120,6 +120,17 @@
             tools:layout_editor_absoluteX="138dp"
             tools:layout_editor_absoluteY="525dp" />
 
+        <Button
+            android:id="@+id/buttonAddAdvert"
+            android:layout_marginTop="250dp"
+            android:gravity="center"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:onClick="showPopup"
+            android:background="@drawable/my_button_inv"
+            android:textColor="@color/colorTheme"
+            android:text="add an advert" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
     <RelativeLayout
         android:layout_width="300dp"
