@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +31,8 @@ public class Dashboard extends AppCompatActivity {
     LinearLayout mainLinearLayout;
     Button btnCheckout;
     String jsonCart;
+    int totalDue = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +66,7 @@ public class Dashboard extends AppCompatActivity {
 
                         String desc = jsonObject.get("description").toString();
                         String price = jsonObject.get("price").toString();
-
+                        totalDue += Integer.parseInt(price);
                         //
                         LinearLayout l = new LinearLayout(Dashboard.this);
                         l.setOrientation(LinearLayout.VERTICAL);
@@ -108,19 +111,27 @@ public class Dashboard extends AppCompatActivity {
     }
     public void doCheckout(View view){
         PHPrequest phPrequest = new PHPrequest();
-        phPrequest.doRequest(this, "checkout.php", new RequestHandler() {
+        phPrequest.doRequest(Dashboard.this, "checkout.php", new RequestHandler() {
             @Override
             public HttpUrl.Builder passParametersToURL(HttpUrl.Builder urlBuilder) {
                 urlBuilder.addQueryParameter("buyerEmail",
                         Constants.USER_EMAIL);
+                urlBuilder.addQueryParameter("jsonString",
+                        jsonCart);
                 return urlBuilder;
             }
 
             @Override
             public void processResponse(String responseFromRequest) {
                 // clear current UI cart
-                mainLinearLayout.removeAllViews();
-
+                if(responseFromRequest.equals("Cart cleared.")){
+                    mainLinearLayout.removeAllViews();
+                    int newFunds = (int)(Double.parseDouble(Constants.USER_FUNDS) - totalDue);
+                    Constants.USER_FUNDS = newFunds +".00";
+                }
+                else{
+                    Toast.makeText(Dashboard.this,responseFromRequest,Toast.LENGTH_LONG).show();
+                }
                 // goto generate receipt
                 // pass json string if necessary(called it jsonCart)
             }
