@@ -6,6 +6,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -127,7 +128,12 @@ public class Profile extends AppCompatActivity {
 
     }
     public void showPopup(View v) {
+        Intent intent =new Intent(getBaseContext(),custompopup.class);
+        intent.putExtra("Seller",Constants.USER_EMAIL);
+        startActivity(intent);
+
         Homepage.redirectActivity(this,custompopup.class);
+
 //        TextView txtclose;
 //        Button btnUpload;
 //        //myDialog.setContentView(R.layout.activity_custompopup);
