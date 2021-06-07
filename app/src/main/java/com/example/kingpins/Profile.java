@@ -129,7 +129,7 @@ public class Profile extends AppCompatActivity {
     }
     public void showPopup(View v) {
         Intent intent =new Intent(getBaseContext(),custompopup.class);
-        intent.putExtra("Seller",Constants.USER_EMAIL);
+        intent.putExtra("Seller",Constants.USER_EMAIL.toString());
         startActivity(intent);
 
         Homepage.redirectActivity(this,custompopup.class);

@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2f333f"
-    android:padding="5dp"
     android:layout_gravity="center"
+    android:background="#2f333f"
+    android:orientation="vertical"
+    android:padding="5dp"
     tools:context=".custompopup">
+
     <TextView
         android:id="@+id/txtclose"
         android:layout_width="30dp"
-        android:padding="5dp"
         android:layout_height="30dp"
-        android:textColor="@color/white"
-        android:text="X"
-        android:textStyle="bold"
         android:layout_gravity="end"
+        android:background="@drawable/circlebackground"
         android:gravity="center"
-        android:background="@drawable/circlebackground"/>
+        android:padding="5dp"
+        android:text="X"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,12 +30,11 @@
         <ImageView
             android:id="@+id/selectediImage"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/app_name"
+            android:layout_height="192dp"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            />
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/app_name" />
 
         <Button
             android:id="@+id/button_choose_image"
@@ -45,82 +45,127 @@
             android:textSize="12dp" />
 
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginTop="15dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
         android:padding="5dp">
+
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
             android:background="#eaad43"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="5dp"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:padding="5dp">
+
             <EditText
                 android:id="@+id/productName"
                 android:layout_width="200dp"
                 android:layout_height="30dp"
-                android:hint="name"
                 android:background="#2f333f"
+                android:hint="Description"
                 android:padding="5dp"
-                android:textColorHint="#ffffff"
                 android:textColor="#ffffff"
-                android:textSize="14sp"
-                />
+                android:textColorHint="#ffffff"
+                android:textSize="14sp" />
         </LinearLayout>
+
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
             android:background="#45bc62"
-            android:padding="5dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:padding="5dp">
+
             <EditText
+                android:id="@+id/productPrice"
                 android:layout_width="200dp"
                 android:layout_height="30dp"
-                android:id="@+id/productPrice"
-                android:hint="price"
                 android:background="#2f333f"
-                android:textSize="14sp"
+                android:hint="price"
                 android:padding="5dp"
+                android:textColor="#ffffff"
                 android:textColorHint="#ffffff"
-                android:textColor="#ffffff"/>
+                android:textSize="14sp" />
         </LinearLayout>
+
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
             android:background="#49acd5"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:orientation="horizontal">
+
             <EditText
+                android:id="@+id/category"
                 android:layout_width="200dp"
                 android:layout_height="30dp"
-                android:id="@+id/category"
-                android:hint="type of a products/tag"
-                android:padding="5dp"
-                android:textColorHint="#ffffff"
-                android:textColor="#ffffff"
-                android:textSize="14sp"
                 android:background="#2f333f"
-                />
+                android:hint="Category"
+                android:padding="5dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
+                android:textSize="14sp" />
         </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="392dp"
+        android:layout_height="50dp"
+        android:background="#eaad43"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/Email"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:background="#2f333f"
+            android:hint="Email"
+            android:padding="5dp"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/btnUpload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="upload add"
-        android:padding="5dp"
-        android:textSize="12dp"
-        android:layout_marginTop="15dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
         android:background="@drawable/circlebackground"
-        android:textColor="@color/white"/>
+        android:onClick="doUpload"
+        android:padding="5dp"
+        android:text="upload add"
+        android:textColor="@color/white"
+        android:textSize="12dp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="104dp">
+
+        <RadioButton
+            android:id="@+id/rdProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product" />
+
+        <RadioButton
+            android:id="@+id/rdService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Services" />
+    </RadioGroup>
+
 
 </LinearLayout>
