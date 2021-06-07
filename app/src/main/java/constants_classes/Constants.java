@@ -10,4 +10,5 @@ public class Constants
     public static String USER_FIRST_NAME = "";
     public static String USER_LAST_NAME = "";
     public static String USER_FUNDS = "";
+    public static String USER_IMAGE = "";
 }

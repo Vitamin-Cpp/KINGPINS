@@ -19,7 +19,7 @@
             android:id="@+id/include"
             layout="@layout/main_toolbar" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@color/white"
@@ -29,14 +29,15 @@
                 android:id="@+id/profilePic"
                 android:layout_width="190dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/studentpic"
+                android:scaleType="centerCrop"
+                android:background="@drawable/placeholder"
                 android:foreground="@drawable/circle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/linearLayout"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.101" />
+                app:layout_constraintVertical_bias="1.0" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -82,7 +83,33 @@
 
             </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:padding="5sp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/addImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/my_button_inv"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorTheme"
+                android:text="add image" />
+
+            <Button
+                android:id="@+id/saveChanges"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/colorTheme"
+                android:background="@drawable/my_button_inv"
+                android:text="save changes" />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="345dp"
             android:layout_height="60dp"
@@ -122,7 +149,7 @@
 
         <Button
             android:id="@+id/buttonAddAdvert"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="200dp"
             android:gravity="center"
             android:layout_width="200dp"
             android:layout_height="50dp"
