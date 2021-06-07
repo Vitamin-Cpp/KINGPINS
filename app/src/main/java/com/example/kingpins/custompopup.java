@@ -49,7 +49,7 @@ public class custompopup extends AppCompatActivity {
     private TextView txtclose;
     public TextView productName, productPrice, category;
     private Button btnUpload;
-    File selectedImagefile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,55 +90,55 @@ public class custompopup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //we send stuff for storage on the database
-                request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            //if the product is successfully uploaded
-                            if (jsonObject.names().get(0).equals("success")) {
-                                Toast.makeText(getApplicationContext(), "" + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+//                request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        try {
+//                            JSONObject jsonObject = new JSONObject(response);
+//                            //if the product is successfully uploaded
+//                            if (jsonObject.names().get(0).equals("success")) {
+//                                Toast.makeText(getApplicationContext(), "" + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(), Profile.class));
-
-                            }
-                            //Some error occured
-                            else if (jsonObject.names().get(0).equals("error")) {
-                                Toast.makeText(getApplicationContext(), "Error: " + jsonObject.getString("incomplete"), Toast.LENGTH_SHORT).show();
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-
-
-                }) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        HashMap<String, String> hashMap = new HashMap<String, String>();
-                        hashMap.put("seller", getIntent().getStringExtra("Seller"));
-                        hashMap.put("productName", productName.getText().toString());
-                        hashMap.put("productPrice", productPrice.getText().toString());
-                        hashMap.put("category", category.getText().toString());
-                        hashMap.put("image", selectedImagefile.toString());
-
-
-                        return hashMap;
-                    }
-                };
-
-                requestQueue.add(request);
-
-
+//
+//                            }
+//                            //Some error occured
+//                            else if (jsonObject.names().get(0).equals("error")) {
+//                                Toast.makeText(getApplicationContext(), "Error: " + jsonObject.getString("incomplete"), Toast.LENGTH_SHORT).show();
+//                            }
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//
+//                    }
+//                }, new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//
+//                    }
+//
+//
+//                }) {
+//                    @Override
+//                    protected Map<String, String> getParams() throws AuthFailureError {
+//                        HashMap<String, String> hashMap = new HashMap<String, String>();
+//                        hashMap.put("seller", getIntent().getStringExtra("Seller"));
+//                        hashMap.put("productName", productName.getText().toString());
+//                        hashMap.put("productPrice", productPrice.getText().toString());
+//                        hashMap.put("category", category.getText().toString());
+//                        hashMap.put("image", selectedImagefile.toString());
+//
+//
+//                        return hashMap;
+//                    }
+//                };
+//
+//                requestQueue.add(request);
+//
+//
             }
-        });
+       });
     }
     private void selectImage(){
         selectedImage.setImageBitmap(null);
@@ -175,15 +175,17 @@ public class custompopup extends AppCompatActivity {
 
 
                         //the file path of the selected image
-                        selectedImagefile = new File(getPathFromUri(selectedImageUri));
+
 
                     }catch (Exception exception){
                         Toast.makeText(this,exception.getMessage(),Toast.LENGTH_SHORT).show();
                     }
                 }
             }
+
         }
     }
+
     public String getPathFromUri(Uri contentUri){
         String filePath;
         Cursor cursor = getContentResolver().query(contentUri,null,null,null,null);
