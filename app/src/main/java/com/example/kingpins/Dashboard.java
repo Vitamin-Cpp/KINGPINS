@@ -4,6 +4,7 @@ package com.example.kingpins;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -33,6 +34,7 @@ public class Dashboard extends AppCompatActivity {
     LinearLayout mainLinearLayout;
     Button btnCheckout;
     String jsonCart;
+    StringBuilder items = new StringBuilder("");
 
     int totalDue = 0;
     ArrayList<String[]> receiptData = new ArrayList<>();
@@ -73,7 +75,12 @@ public class Dashboard extends AppCompatActivity {
                         String price = jsonObject.get("price").toString();
                         totalDue += Integer.parseInt(price);
 
+                        if(i > 0)
+                        {
+                            items.append("\n");
+                        }
                         receiptData.add(new String[]{desc, price});
+                        items.append(i+1).append(". ").append(desc).append(" - ").append("R ").append(price).append(".00");
                         //
                         LinearLayout l = new LinearLayout(Dashboard.this);
                         l.setOrientation(LinearLayout.VERTICAL);
@@ -137,8 +144,11 @@ public class Dashboard extends AppCompatActivity {
                     Constants.USER_FUNDS = newFunds +".00";
 
                     // goto generate receipt
-                    // use int totalDue
-                    // use arraylist receiptData, contains array [description, price] for each element
+                    Intent i = new Intent(Dashboard.this,Receipts.class);
+                    i.putExtra("items",items.toString());
+                    i.putExtra("totalDue",totalDue);
+                    finish();
+                    startActivity(i);
                 }
                 else{
                     Toast.makeText(Dashboard.this,responseFromRequest,Toast.LENGTH_LONG).show();

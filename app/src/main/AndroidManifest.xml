@@ -4,16 +4,17 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
-        
         android:icon="@drawable/logo"
         android:label="StuMarket"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".custompopup"></activity>
+        <activity android:name=".Receipts"></activity>
+        <activity android:name=".custompopup" />
         <activity android:name=".furniture" />
         <activity android:name=".office" />
         <activity android:name=".gadgets" />
