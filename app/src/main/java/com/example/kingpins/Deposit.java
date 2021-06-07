@@ -69,6 +69,8 @@ public class Deposit extends AppCompatActivity {
             @Override
             public void processResponse(String responseFromRequest)
             {
+                int newFunds = (int)(Double.parseDouble(Constants.USER_FUNDS) + Integer.parseInt(etFunds.getText().toString().trim()));
+                Constants.USER_FUNDS = newFunds +".00";
                 Toast.makeText(Deposit.this,"Your deposit is successful",Toast.LENGTH_LONG).show();
                 startActivity(new Intent(Deposit.this,Homepage.class));
 

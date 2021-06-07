@@ -159,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
                 Constants.USER_FIRST_NAME = json.getString("firstname");
                 Constants.USER_LAST_NAME = json.getString("lastname");
                 Constants.USER_FUNDS = json.getString("funds");
+                Constants.USER_IMAGE=json.getString("image");
 
                 // alert user
                 Toast.makeText(MainActivity.this,"Login Approved",Toast.LENGTH_LONG).show();
