@@ -44,6 +44,27 @@
             android:text="Choose file"
             android:textSize="12dp" />
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="60dp">
+
+            <RadioButton
+                android:id="@+id/rdProduct"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:drawablePadding="20dp"
+                android:paddingLeft="20dp"
+                android:text="Product" />
+
+            <RadioButton
+                android:id="@+id/rdService"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Services" />
+        </RadioGroup>
+
     </LinearLayout>
 
     <LinearLayout
@@ -103,39 +124,20 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/category"
+            <Spinner
+                android:id="@+id/spCategory"
                 android:layout_width="200dp"
                 android:layout_height="30dp"
                 android:background="#2f333f"
-                android:hint="Category"
                 android:padding="5dp"
                 android:textColor="#ffffff"
                 android:textColorHint="#ffffff"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+
+                />
         </LinearLayout>
     </LinearLayout>
 
-
-    <LinearLayout
-        android:layout_width="392dp"
-        android:layout_height="50dp"
-        android:background="#eaad43"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="5dp">
-
-        <EditText
-            android:id="@+id/Email"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:background="#2f333f"
-            android:hint="Email"
-            android:padding="5dp"
-            android:textColor="#ffffff"
-            android:textColorHint="#ffffff"
-            android:textSize="14sp" />
-    </LinearLayout>
 
     <Button
         android:id="@+id/btnUpload"
@@ -149,23 +151,6 @@
         android:text="upload add"
         android:textColor="@color/white"
         android:textSize="12dp" />
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="104dp">
-
-        <RadioButton
-            android:id="@+id/rdProduct"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Product" />
-
-        <RadioButton
-            android:id="@+id/rdService"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Services" />
-    </RadioGroup>
 
 
 </LinearLayout>

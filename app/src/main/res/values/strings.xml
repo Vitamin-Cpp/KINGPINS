@@ -26,4 +26,16 @@
     <string name="total_price_zar">Total Price(ZAR):</string>
     <string name="total">TOTAL</string>
     <string name="back_to_home">BACK TO HOME</string>
+    <string-array name="categories">
+        <item>Category</item>
+        <item>BOOKS</item>
+        <item>STATIONARY</item>
+        <item>OFFICE CONSUMES</item>
+        <item>GADGETS</item>
+        <item>FURNITURE</item>
+        <item>PERIPHERALS</item>
+        <item>BOOK A TUTOR</item>
+        <item>LAPTOP REPAIR</item>
+        <item>MENTORSHIP</item>
+    </string-array>
 </resources>
