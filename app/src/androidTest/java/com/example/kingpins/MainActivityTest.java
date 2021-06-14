@@ -1,5 +1,11 @@
 //package com.example.kingpins;
 //
+//import android.app.Activity;
+//import android.os.Bundle;
+//import android.view.View;
+//import android.widget.Button;
+//
+//import org.junit.After;
 //import org.junit.Before;
 //import org.junit.Rule;
 //import org.junit.Test;
@@ -8,6 +14,10 @@
 //import androidx.test.ext.junit.rules.ActivityScenarioRule;
 //import androidx.test.ext.junit.runners.AndroidJUnit4;
 //import androidx.test.filters.LargeTest;
+//import androidx.test.rule.ActivityTestRule;
+//
+//import com.google.android.material.textfield.TextInputEditText;
+//import com.google.android.material.textfield.TextInputLayout;
 //
 //import static androidx.test.espresso.Espresso.onView;
 //import static androidx.test.espresso.action.ViewActions.click;
@@ -22,24 +32,38 @@
 //public class MainActivityTest {
 //
 //    @Rule
-//    public ActivityScenarioRule<MainActivity> activityRule
-//            = new ActivityScenarioRule<>(MainActivity.class);
-//    String strEmail, strPassword;
+//    public ActivityTestRule<MainActivity> mActivityRule = null;
+//    Activity mainActivity = null;
+//
+//    private TextInputEditText etEmail , etPassword;
+//    private TextInputLayout ilEmail , ilPassword;
+//    private Button btnLogin , btnRegister;
+//
 //    @Before
-//    public void initValidString() {
-//        // give variables values
-//        strEmail = "thapelo@wits.ac.za";
-//        strPassword = "12345678";
+//    public void setUp() throws Exception {
+//        try{
+//            mActivityRule = new ActivityTestRule<>(MainActivity.class);
+//            mainActivity = mActivityRule.getActivity();
+//        }
+//        catch (Exception e)
+//        {
+//            e.printStackTrace();
+//        }
 //    }
 //
 //    @Test
-//    public void checkViewsAppeared() {
-//        onView(withId(R.id.txtSlogan)).check(matches(isDisplayed()));
-//        onView(withId(R.id.loginEmail)).check(matches(isDisplayed()));
-//        onView(withId(R.id.loginPassword)).check(matches(isDisplayed()));
-//        onView(withId(R.id.btnLogin)).check(matches(isDisplayed()));
-//        onView(withId(R.id.btnRegister)).check(matches(isDisplayed()));
-//        onView(withId(R.id.btnGoogleLogin)).check(matches(isDisplayed()));
+//    public void testMain(){
+//        ilEmail = mainActivity.findViewById(R.id.layout_loginEmail);
+//        ilPassword = mainActivity.findViewById(R.id.layout_loginPassword);
+//        etEmail = mainActivity.findViewById(R.id.loginEmail);
+//        etPassword = mainActivity.findViewById(R.id.loginPassword);
+//        btnLogin = mainActivity.findViewById(R.id.btnLogin);
+//        btnRegister = mainActivity.findViewById(R.id.btnRegister);
 //    }
 //
+//    @After
+//    public void tearDown() throws Exception {
+//        mActivityRule = null;
+//        mainActivity = null;
+//    }
 //}
