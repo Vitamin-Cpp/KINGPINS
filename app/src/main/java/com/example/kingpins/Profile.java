@@ -1,24 +1,50 @@
 package com.example.kingpins;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.InputType;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.text.NumberFormat;
 import java.util.Currency;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import connection_classes.PHPrequest;
 import connection_classes.RequestHandler;
@@ -27,9 +53,12 @@ import okhttp3.HttpUrl;
 
 public class Profile extends AppCompatActivity {
     DrawerLayout drawerLayout;
-    private Button  btnChangePassword, btnChangeEmail;
+    private Button  btnChangePassword, btnChangeEmail, btnAddImage, btnSaveChanges;
     private TextView tvFirstName, tvLastName, tvFunds, tvEmail;
     private String newPassword = "", newEmail = "";
+    ImageView imageView;
+    private static final int REQUEST_CODE_STORAGE_PERMISSION=1;
+    private static final int REQUEST_CODE_SELECT_IMAGE=2;
     //Dialog myDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,19 +68,29 @@ public class Profile extends AppCompatActivity {
 
         btnChangeEmail = findViewById(R.id.btnChangeEmail);
         btnChangePassword = findViewById(R.id.btnChangePassword);
+        btnAddImage=findViewById(R.id.addImage);
+        btnSaveChanges= findViewById(R.id.saveChanges);
 
         tvFirstName = findViewById(R.id.txtFirstName);
         tvLastName = findViewById(R.id.txtLastName);
         tvFunds = findViewById(R.id.txtFunds);
         tvEmail = findViewById(R.id.tvEmail);
 
-       // myDialog = new Dialog(this);
-
+        // myDialog = new Dialog(this);
+        imageView= findViewById(R.id.profilePic);
         String value = "R " + Constants.USER_FUNDS;
         tvFunds.setText(value);
         tvFirstName.setText(Constants.USER_FIRST_NAME);
         tvLastName.setText(Constants.USER_LAST_NAME);
         tvEmail.setText(Constants.USER_EMAIL);
+
+        if(Constants.USER_IMAGE.equals("yes")){
+            String url= Constants.URL_LINK+"images/"+Constants.USER_FIRST_NAME+Constants.USER_LAST_NAME+".JPG";
+            Glide.with(Profile.this)
+                    .load(url)
+                    .into(imageView);
+
+        }
 
         btnChangeEmail.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -89,7 +128,22 @@ public class Profile extends AppCompatActivity {
             builder.show();
         });
 
-
+        btnAddImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //check condition
+                if(ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+                    //When permission denied
+                    //request permission
+                    ActivityCompat.requestPermissions(Profile.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_STORAGE_PERMISSION);
+                }
+                else {
+                    //when permission grated
+                    //create method
+                    selectImage();
+                }
+            }
+        });
         btnChangePassword.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Enter new password");
@@ -123,6 +177,13 @@ public class Profile extends AppCompatActivity {
             });
 
             builder.show();
+        });
+
+        btnSaveChanges.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveChanges();
+            }
         });
 
     }
@@ -250,6 +311,93 @@ public class Profile extends AppCompatActivity {
         //we log out
         Homepage.logOut(this);
     }
+
+    private void selectImage() {
+        //clear previous data
+        Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        if (intent.resolveActivity(getPackageManager()) != null){
+            startActivityForResult(intent, REQUEST_CODE_SELECT_IMAGE);
+
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull @org.jetbrains.annotations.NotNull String[] permissions, @NonNull @org.jetbrains.annotations.NotNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //check condition
+        if(requestCode==REQUEST_CODE_STORAGE_PERMISSION && grantResults.length== PackageManager.PERMISSION_GRANTED && grantResults.length > 0){
+            //when permission is granted
+            //call method
+            selectImage();
+        }
+        else{
+            //when permission is denied
+            Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //check condition
+        if(requestCode==REQUEST_CODE_SELECT_IMAGE && resultCode==RESULT_OK && data!= null){
+            //When result is ok
+            //Initialize uri
+            Uri selectedImageUri= data.getData();
+            if(selectedImageUri != null){
+                try {
+                    InputStream inputStream= getContentResolver().openInputStream(selectedImageUri);
+                    Bitmap bitmap= BitmapFactory.decodeStream(inputStream);
+                    imageView.setImageBitmap(bitmap);
+                }catch (Exception exception){
+                    Toast.makeText(this, exception.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        }
+    }
+
+    private String imageToString()
+    {
+        imageView.buildDrawingCache();
+        Bitmap bitmap=imageView.getDrawingCache();
+        ByteArrayOutputStream stream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
+        byte[] image=stream.toByteArray();
+        return Base64.encodeToString(image,0);
+    }
+
+    private void saveChanges(){
+        StringRequest request= new StringRequest(Request.Method.POST, Constants.URL_LINK + "add_image.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(),response.toString(),Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Nullable
+            @org.jetbrains.annotations.Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params= new HashMap<>();
+                params.put("email", Constants.USER_EMAIL);
+                params.put("firstname", Constants.USER_FIRST_NAME);
+                params.put("lastname", Constants.USER_LAST_NAME);
+                params.put("image", imageToString());
+                return params;
+            }
+        };
+
+        RequestQueue queue= Volley.newRequestQueue(getApplicationContext());
+        queue.add(request);
+    }
+
+
     @Override
     protected void onPause() {
         super.onPause();
