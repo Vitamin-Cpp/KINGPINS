@@ -18,6 +18,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
@@ -70,6 +71,7 @@ public class custompopup extends AppCompatActivity implements AdapterView.OnItem
 
 
 
+
     private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
     private static final int REQUEST_CODE_SELECT_IMAGE = 2;
     View rootView;
@@ -97,12 +99,6 @@ public class custompopup extends AppCompatActivity implements AdapterView.OnItem
             }
         });
 
-        btnUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                upload();
-            }
-        });
         //this is the button we will use to select an image
 
         findViewById(R.id.button_choose_image).setOnClickListener(new View.OnClickListener() {
@@ -133,6 +129,28 @@ public class custompopup extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
+    public void doUpload(View view)
+    {
+        if(choiceOfCategory.isEmpty()||choiceOfCategory.equals("Category")) {
+            Toast.makeText(getApplicationContext(), "Please select category", Toast.LENGTH_LONG).show();
+        }else if(!radService.isChecked()&&!radProduct.isChecked())
+        {
+            Toast.makeText(getApplicationContext(), "Please select Service or Product", Toast.LENGTH_LONG).show();
+        }else if(TextUtils.isEmpty(productName.getText())||TextUtils.isEmpty(productPrice.getText())){
+            Toast.makeText(getApplicationContext(), "Please give all details", Toast.LENGTH_LONG).show();
+        }
+        else{
+            if (radProduct.isChecked()) {
+
+                uploadProduct();
+
+
+            } else if (radService.isChecked()) {
+                uploadService();;
+            }
+        }
+
+    }
 
     private void selectImage() {
         //clear previous data
@@ -190,7 +208,7 @@ public class custompopup extends AppCompatActivity implements AdapterView.OnItem
 
         }
     }
-    private void upload(){
+    private void uploadProduct(){
         StringRequest request= new StringRequest(Request.Method.POST, Constants.URL_LINK + "upload_product.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -207,8 +225,41 @@ public class custompopup extends AppCompatActivity implements AdapterView.OnItem
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params= new HashMap<>();
+
                 params.put("image", imageToString());
-                params.put("productName",productName.getText().toString());
+                params.put("productName", productName.getText().toString());
+                //params.put("productPrice", productPrice.getText().toString();
+                params.put("category", choiceOfCategory);
+                params.put("seller", Constants.USER_EMAIL);
+                return params;
+            }
+        };
+
+        RequestQueue queue= Volley.newRequestQueue(getApplicationContext());
+        queue.add(request);
+    }
+
+    private void uploadService(){
+        StringRequest request= new StringRequest(Request.Method.POST, Constants.URL_LINK + "upload_service.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(),response.toString(),Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Nullable
+            @org.jetbrains.annotations.Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params= new HashMap<>();
+
+                // params.put("image", imageToString());
+                params.put("productName", productName.getText().toString());
+                //params.put("productPrice", productPrice.getText().toString();
                 params.put("category", choiceOfCategory);
                 params.put("seller", Constants.USER_EMAIL);
                 return params;
@@ -273,88 +324,6 @@ public class custompopup extends AppCompatActivity implements AdapterView.OnItem
 
         }
     }
-
-    //    public void doUpload(View view)
-//    {
-//        if(choiceOfCategory.isEmpty()||choiceOfCategory.equals("Category")) {
-//            Toast.makeText(getApplicationContext(), "Please select category", Toast.LENGTH_LONG).show();
-//        }else if(!radService.isChecked()&&!radProduct.isChecked())
-//        {
-//            Toast.makeText(getApplicationContext(), "Please select Service or Product", Toast.LENGTH_LONG).show();
-//        }
-//        else{
-//        if (radProduct.isChecked()) {
-//
-//            PHPrequest phPrequest = new PHPrequest();
-//            phPrequest.doRequest(custompopup.this, "upload_product.php", new RequestHandler() {
-//
-//                // do request
-//                @Override
-//                public HttpUrl.Builder passParametersToURL(HttpUrl.Builder urlBuilder) {
-//
-//                    String image = imageToString();
-//
-//
-//                    String name1 = productName.getText().toString().trim();
-//
-//                    String producprice1 = productPrice.getText().toString().trim();
-//                    // override method to pass relevant parameters
-//                    urlBuilder.addQueryParameter(KEY_IMAGE, image);
-//                    urlBuilder.addQueryParameter(KEY_NAME, name1);
-//                    urlBuilder.addQueryParameter(KEY_PRICE, producprice1);
-//                    urlBuilder.addQueryParameter(KEY_CATEGORY,choiceOfCategory);
-//                    Intent intent = getIntent();
-//
-//                    urlBuilder.addQueryParameter("seller",Constants.USER_EMAIL);
-//
-//                    return urlBuilder;
-//                }
-//
-//                @Override
-//                public void processResponse(String responseFromRequest) {
-//                    // override method to process response from server
-//                    useResponse(responseFromRequest);
-//                }
-//            });
-//            //saveChanges();
-//
-//
-//        } else if (radService.isChecked()) {
-//            PHPrequest phPrequest = new PHPrequest();
-//            phPrequest.doRequest(custompopup.this, "upload_service.php", new RequestHandler() {
-//
-//                // do request
-//                @Override
-//                public HttpUrl.Builder passParametersToURL(HttpUrl.Builder urlBuilder) {
-//
-//                    // String image =getStringImage(bitmap);
-//
-//                    //Getting Image Name
-//                    String name1 = productName.getText().toString().trim();
-//                    //String category1 = category.getText().toString().trim();
-//                    String producprice1 = productPrice.getText().toString().trim();
-//                    // override method to pass relevant parameters
-//                    //urlBuilder.addQueryParameter(KEY_IMAGE, image);
-//                    urlBuilder.addQueryParameter(KEY_NAME, name1);
-//                    urlBuilder.addQueryParameter(KEY_PRICE, producprice1);
-//                    //   urlBuilder.addQueryParameter(KEY_CATEGORY,category1);
-//                    Intent intent = getIntent();
-//
-//                    urlBuilder.addQueryParameter("seller", Constants.USER_EMAIL);
-//
-//                    return urlBuilder;
-//                }
-//
-//                @Override
-//                public void processResponse(String responseFromRequest) {
-//                    // override method to process response from server
-//                    useResponse(responseFromRequest);
-//                }
-//            });
-//        }
-//    }
-//
-//        }
 
 
 
