@@ -1,30 +1,14 @@
 package com.example.kingpins;
 
-import androidx.appcompat.app.ActionBar;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toolbar;
-
-import com.google.android.gms.common.api.Response;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.Request;
 
 public class books extends AppCompatActivity {
 //    private String userEmail;
@@ -62,8 +46,8 @@ public class books extends AppCompatActivity {
         products = new ArrayList<>();
 
 
-        products.add(new prod("Principles and Practice by Eric Mazur","R600","katlehojnr3520@gmail.com",R.drawable.principlesandpracticeofphysics));
-        products.add(new prod("Calculus","R400","katlehojnr3520@gmail.com",R.drawable.calculus));
+        products.add(new prod("Principles and Practice by Eric Mazur","R600","kingpins@gmail.com",R.drawable.principlesandpracticeofphysics));
+        //products.add(new prod("Calculus","R400","katlehojnr3520@gmail.com",R.drawable.calculus));
         //we specify an adapter for our recycler view
         mAdapter = new MyAdapter(this,products);
         recyclerView.setAdapter(mAdapter);
