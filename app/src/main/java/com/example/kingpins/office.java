@@ -1,10 +1,10 @@
 package com.example.kingpins;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class office extends AppCompatActivity {
         products = new ArrayList<>();
         products.add(new prod("Office Chair","R600","katlehojnr3520@gmail.com",R.drawable.officechairs));
         products.add(new prod("Printer","R400","katlehojnr3520@gmail.com",R.drawable.printer));
-        //we specify an adapter for our recycler view
+//        //we specify an adapter for our recycler view
         mAdapter = new MyAdapter(this,products);
         recyclerView.setAdapter(mAdapter);
 

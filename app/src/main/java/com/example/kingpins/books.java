@@ -1,19 +1,26 @@
 package com.example.kingpins;
 
-import android.os.Bundle;
-import android.view.View;
-
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.toolbox.StringRequest;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toolbar;
+
 import com.google.android.gms.common.api.Response;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +36,9 @@ public class books extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private List<prod> products;
     DrawerLayout drawerLayout;
-    //private ProgressBar progressBar;
-    //the location where we can find the php file
-    private static  final String BASE_URL ="https://lamp.ms.wits.ac.za/home/s2280727/kingpins/getProduct";
+//    private ProgressBar progressBar;
+        //the location where we can find the php file
+    //private static  final String BASE_URL = "http://192.168.100.16/android/getProducts.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +75,7 @@ public class books extends AppCompatActivity {
 //        getProducts();
     }
 //    private void getProducts (){
-//        //progressBar.setVisibility(View.VISIBLE);
+//        progressBar.setVisibility(View.VISIBLE);
 //
 //        StringRequest stringRequest = new StringRequest(Request.Method.GET, BASE_URL,
 //                new Response.Listener<String>() {

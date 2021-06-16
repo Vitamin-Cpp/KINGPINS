@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -87,11 +89,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull myViewHolder holder, int position) {
-        prod product = products.get(position);
+        final prod product = products.get(position);
         holder.mResource.setImageResource(product.getImage());
         holder.prodName.setText(product.getProd_name());
         holder.price.setText(product.getPrice());
         holder.seller.setText(product.getSeller());
+        Glide.with(mContext).load(product.getImage()).into(holder.mResource);
+
     }
 
     @Override
