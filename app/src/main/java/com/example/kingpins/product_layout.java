@@ -1,27 +1,19 @@
 package com.example.kingpins;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-
-import connection_classes.PHPrequest;
-import connection_classes.RequestHandler;
-import constants_classes.Constants;
-import okhttp3.HttpUrl;
 
 public class product_layout extends RecyclerView.Adapter<product_layout.ViewHolder> {
 
@@ -39,14 +31,14 @@ public class product_layout extends RecyclerView.Adapter<product_layout.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder{
 
          ImageView imageview;
-         TextView textProdName, textPrice, textProdCode, textSeller;
+         TextView textProdName, textPrice, textSeller;
          Button btnAddToCard;
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             imageview = itemView.findViewById(R.id.imageView);
             textProdName = itemView.findViewById(R.id.textProdName);
             textPrice = itemView.findViewById(R.id.textPrice);
-            textProdCode = itemView.findViewById(R.id.textProdCode);
+
             textSeller = itemView.findViewById(R.id.textSeller);
             btnAddToCard = itemView.findViewById(R.id.btnAddToCard);
             btnAddToCard.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +65,7 @@ public class product_layout extends RecyclerView.Adapter<product_layout.ViewHold
         holder.textProdName.setText(prodList.get(position).getProd_name());
         holder.textPrice.setText(prodList.get(position).getPrice());
         holder.textSeller.setText(prodList.get(position).getSeller());
-        holder.textProdCode.setText(prodList.get(position).getProdCode());
+
     }
 
     @Override
