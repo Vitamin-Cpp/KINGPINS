@@ -60,9 +60,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder> {
                             urlBuilder.addQueryParameter("buyerEmail",
                                     Constants.USER_EMAIL);
                             urlBuilder.addQueryParameter("sellerEmail",
-                                    "jay.sum@email.com");
+                                    "kingpins@gmail.com");
                             urlBuilder.addQueryParameter("productId",
-                                    "1");
+                                    "45");
 
                             return urlBuilder;
                         }
