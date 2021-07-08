@@ -228,7 +228,7 @@ public class custompopup extends AppCompatActivity implements AdapterView.OnItem
 
                 params.put("image", imageToString());
                 params.put("productName", productName.getText().toString());
-                //params.put("productPrice", productPrice.getText().toString();
+                params.put("productPrice", productPrice.getText().toString());
                 params.put("category", choiceOfCategory);
                 params.put("seller", Constants.USER_EMAIL);
                 return params;
@@ -259,7 +259,7 @@ public class custompopup extends AppCompatActivity implements AdapterView.OnItem
 
                 // params.put("image", imageToString());
                 params.put("productName", productName.getText().toString());
-                //params.put("productPrice", productPrice.getText().toString();
+                params.put("productPrice", productPrice.getText().toString());
                 params.put("category", choiceOfCategory);
                 params.put("seller", Constants.USER_EMAIL);
                 return params;

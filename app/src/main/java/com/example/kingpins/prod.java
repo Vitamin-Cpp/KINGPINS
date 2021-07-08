@@ -1,18 +1,24 @@
 package com.example.kingpins;
 
 public class prod {
-        private String prod_name, seller, price,prodCode;
-        private int image;
-
-        public prod (String prod_name, String price,String seller, int image){
-
+        private String prod_name, seller,prodCode,image;
+        private double price;
+        private int id;
+        public prod (String prod_name, Double price,String seller, String image,int id){
+            this.id=id;
             this.prod_name = prod_name;
             this.image = image;
             this.seller = seller;
             this.price = price;
         }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getProd_name() {
             return prod_name;
@@ -22,19 +28,19 @@ public class prod {
             this.prod_name = prod_name;
         }
 
-        public int getImage() {
+        public String getImage() {
             return image;
         }
 
-        public void setImage(int image) {
+        public void setImage(String image) {
             this.image = image;
         }
 
-        public String getPrice() {
+        public Double getPrice() {
             return price;
         }
 
-        public void setPrice(String price) {
+        public void setPrice(Double price) {
             this.price = price;
         }
 

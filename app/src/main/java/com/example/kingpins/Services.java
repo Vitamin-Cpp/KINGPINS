@@ -1,5 +1,6 @@
 package com.example.kingpins;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -55,10 +56,33 @@ public class Services extends Fragment {
         }
     }
 
+    private final View.OnClickListener mListener = new View.OnClickListener() {
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.bttnTutor:
+                    // do stuff
+                    startActivity(new Intent(getActivity(), Tutor.class));
+                    break;
+                case R.id.bttnRepair:
+                    // do stuff
+                    startActivity(new Intent(getActivity(), Repairs.class));
+                    break;
+                case R.id.bttnMentorship:
+                    // do stuff
+                    startActivity(new Intent(getActivity(), Mentorship.class));
+                    break;
+            }
+        }
+    };
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_services, container, false);
+        View view = inflater.inflate(R.layout.fragment_services, container, false);
+        view.findViewById(R.id.bttnTutor).setOnClickListener(mListener);
+        view.findViewById(R.id.bttnRepair).setOnClickListener(mListener);
+        view.findViewById(R.id.bttnMentorship).setOnClickListener(mListener);
+        return view;
     }
 }

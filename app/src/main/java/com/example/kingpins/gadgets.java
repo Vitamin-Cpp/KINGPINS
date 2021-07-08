@@ -1,19 +1,32 @@
 package com.example.kingpins;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class gadgets extends AppCompatActivity {
+
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager manager;
+    private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter mAdapter;
     private List<prod> products;
+    private static  final String BASE_URL = "https://lamp.ms.wits.ac.za/home/s2280727/kingpins/getProduct.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,18 +34,63 @@ public class gadgets extends AppCompatActivity {
         setContentView(R.layout.activity_gadgets);
 
         recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
 
-        manager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(manager);
 
-        //here we are about to add objects to our product list
+        layoutManager = new GridLayoutManager(gadgets.this, 2);
+        recyclerView.setLayoutManager(layoutManager);
+
         products = new ArrayList<>();
-        products.add(new prod("Headphones","R600","katlehojnr3520@gmail.com",R.drawable.earphones));
-        products.add(new prod("Watch","R200","katlehojnr3520@gmail.com",R.drawable.watch));
-        //we specify an adapter for our recycler view
-        mAdapter = new MyAdapter(this,products);
-        recyclerView.setAdapter(mAdapter);
+
+        getProducts();
+
+    }
+    private void getProducts (){
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, BASE_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        //  progressBar.setVisibility(View.GONE);
+
+                        try {
+
+                            JSONArray array = new JSONArray(response);
+                            for (int i = 0; i<array.length(); i++){
+
+                                JSONObject object = array.getJSONObject(i);
+
+                                String product_name = object.getString("description");
+                                double price = object.getDouble("price");
+                                String seller = object.getString("seller");
+                                String image = object.getString("image");
+                                Integer id = object.getInt("id");
+
+
+                                String category = object.getString("category");
+
+                                if(category.equals("GADGETS")) {
+                                    prod product = new prod(product_name,price, seller,image,id);
+                                    products.add(product);
+                                }
+                            }
+
+                        }catch (Exception e){
+
+                        }
+
+                        mAdapter = new MyAdapter(gadgets.this,products);
+                        recyclerView.setAdapter(mAdapter);
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(gadgets.this, error.toString(),Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        Volley.newRequestQueue(gadgets.this).add(stringRequest);
 
     }
 }

@@ -28,8 +28,7 @@ public class peripherals extends AppCompatActivity {
 
         //here we are about to add objects to our product list
         products = new ArrayList<>();
-        products.add(new prod("Mouse","R100","katlehojnr3520@gmail.com",R.drawable.mouse));
-        products.add(new prod("Reading Glasses","R100","katlehojnr3520@gmail.com",R.drawable.glasses));
+
         //we specify an adapter for our recycler view
         mAdapter = new MyAdapter(this,products);
         recyclerView.setAdapter(mAdapter);

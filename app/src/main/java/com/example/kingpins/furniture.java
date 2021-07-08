@@ -28,8 +28,7 @@ public class furniture extends AppCompatActivity {
 
         //here we are about to add objects to our product list
         products = new ArrayList<>();
-        products.add(new prod("Chair","R600","katlehojnr3520@gmail.com",R.drawable.chair));
-        products.add(new prod("Table","R400","katlehojnr3520@gmail.com",R.drawable.table));
+
         //we specify an adapter for our recycler view
         mAdapter = new MyAdapter(this,products);
         recyclerView.setAdapter(mAdapter);

@@ -25,22 +25,22 @@ import connection_classes.RequestHandler;
 import constants_classes.Constants;
 import okhttp3.HttpUrl;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private Context mContext;
     private List<prod> products = new ArrayList<>();
 
-    public MyAdapter (Context Context, List<prod>products){
+    public MyAdapter (Context context, List<prod> products){
         this.products = products;
-        this.mContext = Context;
+        this.mContext = context;
 
     }
-    public class myViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder{
 
         private TextView prodName,price,seller;
         private ImageView mResource;
         private Button addToCart;
 
-        public myViewHolder(View view){
+        public MyViewHolder(View view){
             super(view);
 
             prodName = view.findViewById(R.id.textProdName);
@@ -79,22 +79,53 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder> {
 
     }
 
+    public MyAdapter() {
+        super();
+    }
     @NonNull
-    @NotNull
     @Override
-    public myViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder( @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.activity_product_layout,parent, false);
-        return new myViewHolder(view);
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull myViewHolder holder, int position) {
-        final prod product = products.get(position);
-        holder.mResource.setImageResource(product.getImage());
+    public void onBindViewHolder(@NotNull MyViewHolder holder, int position) {
+
+        prod product = products.get(position);
+
         holder.prodName.setText(product.getProd_name());
-        holder.price.setText(product.getPrice());
-        holder.seller.setText(product.getSeller());
+        holder.price.setText(String.valueOf( "R"+product.getPrice()+"0"));
+        holder.seller.setText("Owner: "+product.getSeller());
         Glide.with(mContext).load(product.getImage()).into(holder.mResource);
+
+        holder.addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                PHPrequest phPrequest = new PHPrequest();
+                phPrequest.doRequest((Activity) v.getContext(), "add_to_cart.php",new RequestHandler() {
+                    @Override
+                    public HttpUrl.Builder passParametersToURL(HttpUrl.Builder urlBuilder) {
+                        // override method to pass relevant parameters
+                        urlBuilder.addQueryParameter("buyerEmail",
+                                Constants.USER_EMAIL);
+                        urlBuilder.addQueryParameter("sellerEmail",
+                                product.getSeller());
+                        urlBuilder.addQueryParameter("productId",
+                                String.valueOf(product.getId()));
+
+                        return urlBuilder;
+                    }
+
+                    @Override
+                    public void processResponse(String responseFromRequest) {
+                        Toast.makeText(v.getContext(), responseFromRequest,Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
+        });
 
     }
 
